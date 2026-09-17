@@ -12,7 +12,7 @@ Do not migrate code from moving main without recording the selected revision. Re
 
 | Milestone | Work | Exit evidence |
 | --- | --- | --- |
-| 1 — contract feasibility | Establish Swift 6.2 package, independent local API/owning-memory types, descriptor validation and safe adapter experiment; no broad codec migration | Compiling equivalent public calls, lifecycle/race/error tests, standalone consumer build and contract issues resolved explicitly |
+| 1 — contract feasibility | Establish Swift 6.2 package, independent local API/owning-memory types, descriptor validation and safe adapter experiment; no codec algorithm migration | Compiling equivalent public calls, lifecycle/race/error tests, standalone consumer build and contract issues resolved explicitly |
 | 2 — migration baseline | Inventory predecessor subsystems/products; select and migrate the smallest native scalar lossless path with MIT/provenance reconciliation | Pinned predecessor comparison, independent decode/encode validation, exact sample/precision results, no new runtime codec dependency |
 | 3 — shared-storage path | Direct final decode into caller storage and encode from compatible sealed storage | Required-sharing copy/allocation/lifetime proof; first suite pair or corresponding codec extension passes |
 | 4 — feature/platform coverage | Extend supported modes/layouts, CLI, optional acceleration and all required OS/architecture paths | Capability matrix, codec-specific regressions, platform results, security and performance evidence |
@@ -37,9 +37,11 @@ Test marker/table/scan bounds, Huffman and arithmetic bounds where applicable, r
 
 Test full 16-bit unsigned extrema, component order, byte order, signed mappings only with explicit metadata, ICC/Exif size limits and float policy rejection. Compare lossless samples exactly; pin justified tolerances for lossy colour conversion/DCT paths. Preserve existing overflow, subsampling, configuration and Watch build reproducers.
 
-### First delivery
+### Initial codec delivery — Milestones 2–4
 
-Implement the common surface and a native unsigned 16-bit lossless SOF3 shared-buffer path. Add the per-codec CLI and interop tests without assuming the predecessor benchmark executable is a general CLI. Join the suite transcode harness for lossless JPEG modes; retain lossy features as explicit options.
+The following codec work follows Milestone 1 contract feasibility. It is not part of the first coding task. Migrate the scalar path in Milestone 2, prove shared storage in Milestone 3, and extend features/CLI/platform coverage in Milestone 4.
+
+Build on the validated common surface to implement a native unsigned 16-bit lossless SOF3 shared-buffer path. Add the per-codec CLI and interop tests without assuming the predecessor benchmark executable is a general CLI. Join the suite transcode harness for lossless JPEG modes; retain lossy features as explicit options.
 
 
 ## Required handover
