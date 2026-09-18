@@ -1,0 +1,29 @@
+Fetching https://github.com/Raster-Lab/SwiftJLI.git
+[1/550] Fetching swiftjli
+Fetched https://github.com/Raster-Lab/SwiftJLI.git (1.37s)
+Creating working copy for https://github.com/Raster-Lab/SwiftJLI.git
+Working copy of https://github.com/Raster-Lab/SwiftJLI.git resolved at 574c16a2eb09d62bf1253076d81c10c40bb5d36e
+Building for debugging...
+[Planning deferred tasks]
+[23 / 38]
+[24 / 39] SwiftJLI
+[29 / 80]
+[33 / 80]
+[36 / 80]
+[41 / 80]
+[43 / 80]
+[46 / 80]
+[49 / 80]
+[52 / 80]
+[54 / 80]
+[57 / 80]
+[58 / 80]
+[61 / 80] SwiftJLI
+[64 / 80] SwiftJLI
+[71 / 80] SwiftJLI-product
+[76 / 81] SwiftJLI
+[76 / 81] MigrationExample-product
+[79 / 83] MigrationExample-product
+[81 / 83] MigrationExample-product
+Build complete! (6.86 secs)
+Storage/API trial passed; JPEG encoding remains deferred.
