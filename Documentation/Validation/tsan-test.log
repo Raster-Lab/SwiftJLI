@@ -1,0 +1,86 @@
+Building for debugging...
+[Planning deferred tasks]
+[29 / 55]
+[30 / 56] SwiftJLI
+[40 / 97]
+[45 / 97]
+[49 / 97]
+[53 / 97]
+[56 / 97]
+[61 / 97]
+[62 / 97]
+[63 / 97]
+[64 / 97]
+[71 / 97] SwiftJLI
+[79 / 97] SwiftJLI
+[87 / 98] SwiftJLITests-product
+[88 / 106]
+[95 / 106] SwiftJLITests-product
+[100 / 106] SwiftJLITests-product
+[102 / 106] SwiftJLITests-product
+Build complete! (5.84 secs)
+Test Suite 'All tests' started at 2026-09-18 16:12:36.132.
+Test Suite 'All tests' passed at 2026-09-18 16:12:36.154.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.022) seconds
+􀟈  Test run started.
+􀄵  Testing Library Version: 2084
+􀄵  Target Platform: arm64e-apple-macos14.0
+􀟈  Test explicitLargerMetadataLimitIsHonoured() started.
+􀟈  Test planarDescriptorsMapEveryComponentAndRejectOverlap() started.
+􀟈  Test concurrentAdaptersReserveExactlyOneWriter() started.
+􀟈  Test sameTokenCannotAuthoriseConcurrentOverlappingBorrows() started.
+􀟈  Test cancellationDuringSyntheticRowsInvalidatesDestination() started.
+􀟈  Test unknownMeasurementsStayUnknownAndMetadataIsBounded() started.
+􀟈  Test invalidResourceProfilesAndProgressFailPredictably() started.
+􀟈  Test sealedOwnerSupportsConcurrentReadersAndNestedRead() started.
+􀟈  Test extremeIntegerInputsThrowWithoutOverflowTraps() started.
+􀟈  Test meaningfulPrecisionRejectsInvalidValues() started.
+􀟈  Test metadataAndDestinationLimitsUseCallerBudget() started.
+􀟈  Test reentrantLeaseOperationsRejectWithoutDeadlocking() started.
+􀟈  Test safeSampleWriterRejectsOutOfRangeWithoutTruncating() started.
+􀟈  Test safeSampleAccessHonoursExplicitBigEndian() started.
+􀟈  Test paddedOddSizedSamplesPreservePrecision(_:) started.
+􀟈  Test adaptersShareWriterAuthorityAndRejectForgedLease() started.
+􀟈  Test paddedStorageCountsTowardsDecodedLimit() started.
+􀟈  Test imageRetainsAdapterUntilLastImageReleaseExactlyOnce() started.
+􀟈  Test abandonedDestinationInvalidatesItsReservedOwner() started.
+􀟈  Test cancellationIsCheckedBeforeAllocatingStorage() started.
+􀟈  Test nativeByteOrderIsResolvedAndColourMeaningValidated() started.
+􀟈  Test independentAllocationAndMemoryCeilingsAreEnforced() started.
+􀟈  Test shortCapacityAndInvalidStrideAreRejected() started.
+􀟈  Test publicOperationsRejectCodecWorkAndAdvertiseEmptyCapabilities() started.
+􀟈  Test pixelAndDimensionLimitsRejectBeforeAllocation() started.
+􀟈  Test decoderPreservesTaskCancellationError() started.
+􀟈  Test configurationsAndBackendRequestsRejectUnsupportedChoices() started.
+􀟈  Test failedFillInvalidatesDestination() started.
+􀟈  Test case passing 1 argument precision → 16 to paddedOddSizedSamplesPreservePrecision(_:) started.
+􀟈  Test case passing 1 argument precision → 12 to paddedOddSizedSamplesPreservePrecision(_:) started.
+􁁛  Test safeSampleAccessHonoursExplicitBigEndian() passed after 0.001 seconds.
+􁁛  Test reentrantLeaseOperationsRejectWithoutDeadlocking() passed after 0.001 seconds.
+􁁛  Test imageRetainsAdapterUntilLastImageReleaseExactlyOnce() passed after 0.001 seconds.
+􁁛  Test adaptersShareWriterAuthorityAndRejectForgedLease() passed after 0.001 seconds.
+􁁛  Test paddedOddSizedSamplesPreservePrecision(_:) with 2 test cases passed after 0.001 seconds.
+􁁛  Test abandonedDestinationInvalidatesItsReservedOwner() passed after 0.001 seconds.
+􁁛  Test failedFillInvalidatesDestination() passed after 0.001 seconds.
+􁁛  Test cancellationIsCheckedBeforeAllocatingStorage() passed after 0.001 seconds.
+􁁛  Test concurrentAdaptersReserveExactlyOneWriter() passed after 0.001 seconds.
+􁁛  Test decoderPreservesTaskCancellationError() passed after 0.001 seconds.
+􁁛  Test sealedOwnerSupportsConcurrentReadersAndNestedRead() passed after 0.001 seconds.
+􁁛  Test paddedStorageCountsTowardsDecodedLimit() passed after 0.001 seconds.
+􁁛  Test planarDescriptorsMapEveryComponentAndRejectOverlap() passed after 0.002 seconds.
+􁁛  Test pixelAndDimensionLimitsRejectBeforeAllocation() passed after 0.001 seconds.
+􁁛  Test nativeByteOrderIsResolvedAndColourMeaningValidated() passed after 0.001 seconds.
+􁁛  Test cancellationDuringSyntheticRowsInvalidatesDestination() passed after 0.002 seconds.
+􁁛  Test unknownMeasurementsStayUnknownAndMetadataIsBounded() passed after 0.002 seconds.
+􁁛  Test sameTokenCannotAuthoriseConcurrentOverlappingBorrows() passed after 0.002 seconds.
+􁁛  Test safeSampleWriterRejectsOutOfRangeWithoutTruncating() passed after 0.002 seconds.
+􁁛  Test publicOperationsRejectCodecWorkAndAdvertiseEmptyCapabilities() passed after 0.001 seconds.
+􁁛  Test invalidResourceProfilesAndProgressFailPredictably() passed after 0.002 seconds.
+􁁛  Test metadataAndDestinationLimitsUseCallerBudget() passed after 0.002 seconds.
+􁁛  Test independentAllocationAndMemoryCeilingsAreEnforced() passed after 0.002 seconds.
+􁁛  Test configurationsAndBackendRequestsRejectUnsupportedChoices() passed after 0.002 seconds.
+􁁛  Test meaningfulPrecisionRejectsInvalidValues() passed after 0.002 seconds.
+􁁛  Test extremeIntegerInputsThrowWithoutOverflowTraps() passed after 0.002 seconds.
+􁁛  Test shortCapacityAndInvalidStrideAreRejected() passed after 0.002 seconds.
+􁁛  Test explicitLargerMetadataLimitIsHonoured() passed after 0.005 seconds.
+􁁛  Test run with 28 tests in 0 suites passed after 0.005 seconds.

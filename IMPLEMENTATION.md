@@ -1,12 +1,14 @@
 # SwiftJLI — staged implementation instructions
 
-Read AGENTS.md and every common contract document first. This plan is for a later owner-assigned coding task; the repository foundation itself contains no implementation. Follow the common contract when predecessor conventions differ. Maintain performance, reliability and security together.
+Read AGENTS.md and every common contract document first. Milestone 1 implements API shapes and owning storage; see [executed evidence](Documentation/MILESTONE1.md). Later milestones require an owner-assigned implementation task. Follow the common contract when predecessor conventions differ. Maintain performance, reliability and security together.
 
 ## Source and destination
 
 Predecessor: [Raster-Lab/JLISwift](https://github.com/Raster-Lab/JLISwift) at inspected SHA `9f1c6eb609fe6f26498db82b13df6b305630a374`. Highest stable-shaped tag observed: `v0.5.0` (resolve independently before choosing it as a baseline). Target module/product: `SwiftJLI`. Target CLI: `swiftjli`. Intended first stable library version: `1.0.0`.
 
 Do not migrate code from moving main without recording the selected revision. Reproduce relevant source tests and inspect source-level capabilities. Existing test totals and benchmark claims are historical, not successor acceptance evidence.
+
+[MIGRATION.md](MIGRATION.md) describes the consumer-side upgrade from JLISwift, with current API mappings and deferred features. Update it as each assigned milestone adds qualified capabilities; its staged cutover checklist supplements the implementation gates below.
 
 ## Milestones and exit evidence
 

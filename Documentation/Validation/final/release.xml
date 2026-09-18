@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="TestResults" errors="0" tests="29" failures="0" skipped="0" time="0.001943792">
+    <testcase classname="SwiftJLITests" name="adaptersShareWriterAuthorityAndRejectForgedLease()" time="0.000849584" />
+    <testcase classname="SwiftJLITests" name="failedFillInvalidatesDestination()" time="0.001146292" />
+    <testcase classname="SwiftJLITests" name="shortCapacityAndInvalidStrideAreRejected()" time="0.001549417" />
+    <testcase classname="SwiftJLITests" name="concurrentAdaptersReserveExactlyOneWriter()" time="0.001359125" />
+    <testcase classname="SwiftJLITests" name="independentAllocationAndMemoryCeilingsAreEnforced()" time="0.00116925" />
+    <testcase classname="SwiftJLITests" name="nativeByteOrderIsResolvedAndColourMeaningValidated()" time="0.001077042" />
+    <testcase classname="SwiftJLITests" name="sameTokenCannotAuthoriseConcurrentOverlappingBorrows()" time="0.001357375" />
+    <testcase classname="SwiftJLITests" name="meaningfulPrecisionRejectsInvalidValues()" time="0.001423958" />
+    <testcase classname="SwiftJLITests" name="paddedOddSizedSamplesPreservePrecision(_:)" time="0.000647083" />
+    <testcase classname="SwiftJLITests" name="imageRetainsAdapterUntilLastImageReleaseExactlyOnce()" time="0.000691541" />
+    <testcase classname="SwiftJLITests" name="reentrantLeaseOperationsRejectWithoutDeadlocking()" time="0.000700917" />
+    <testcase classname="SwiftJLITests" name="extremeIntegerInputsThrowWithoutOverflowTraps()" time="0.001380167" />
+    <testcase classname="SwiftJLITests" name="safeSampleWriterRejectsOutOfRangeWithoutTruncating()" time="0.001269958" />
+    <testcase classname="SwiftJLITests" name="invalidResourceProfilesAndProgressFailPredictably()" time="0.001689292" />
+    <testcase classname="SwiftJLITests" name="publicOperationsRejectCodecWorkAndAdvertiseEmptyCapabilities()" time="0.001385625" />
+    <testcase classname="SwiftJLITests" name="metadataAndDestinationLimitsUseCallerBudget()" time="0.001435708" />
+    <testcase classname="SwiftJLITests" name="cancellationDuringSyntheticRowsInvalidatesDestination()" time="0.001333083" />
+    <testcase classname="SwiftJLITests" name="cancellationInProviderFinalisationPreventsPublication(_:)" time="0.001644625" />
+    <testcase classname="SwiftJLITests" name="cancellationIsCheckedBeforeAllocatingStorage()" time="0.001090958" />
+    <testcase classname="SwiftJLITests" name="configurationsAndBackendRequestsRejectUnsupportedChoices()" time="0.001185791" />
+    <testcase classname="SwiftJLITests" name="explicitLargerMetadataLimitIsHonoured()" time="0.001404458" />
+    <testcase classname="SwiftJLITests" name="decoderPreservesTaskCancellationError()" time="0.001081333" />
+    <testcase classname="SwiftJLITests" name="planarDescriptorsMapEveryComponentAndRejectOverlap()" time="0.001204333" />
+    <testcase classname="SwiftJLITests" name="abandonedDestinationInvalidatesItsReservedOwner()" time="0.000751958" />
+    <testcase classname="SwiftJLITests" name="sealedOwnerSupportsConcurrentReadersAndNestedRead()" time="0.001077542" />
+    <testcase classname="SwiftJLITests" name="paddedStorageCountsTowardsDecodedLimit()" time="0.00095875" />
+    <testcase classname="SwiftJLITests" name="safeSampleAccessHonoursExplicitBigEndian()" time="0.000711666" />
+    <testcase classname="SwiftJLITests" name="pixelAndDimensionLimitsRejectBeforeAllocation()" time="0.001274834" />
+    <testcase classname="SwiftJLITests" name="unknownMeasurementsStayUnknownAndMetadataIsBounded()" time="0.001007625" />
+  </testsuite>
+</testsuites>
