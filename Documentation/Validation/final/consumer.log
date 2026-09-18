@@ -1,0 +1,18 @@
+Building for debugging...
+[0/7] Write sources
+[2/7] Write IndependentConsumer-entitlement.plist
+[3/7] Write swift-version--58304C5D6DBC2206.txt
+[5/11] Emitting module SwiftJLI
+[6/14] Compiling SwiftJLI CodecAPI.swift
+[7/14] Compiling SwiftJLI Errors.swift
+[8/14] Compiling SwiftJLI Image.swift
+[9/14] Compiling SwiftJLI ImageDescriptor.swift
+[10/14] Compiling SwiftJLI ImageStorage.swift
+[11/14] Compiling SwiftJLI Options.swift
+[12/16] Compiling IndependentConsumer main.swift
+[13/16] Emitting module IndependentConsumer
+[13/16] Write Objects.LinkFileList
+[14/16] Linking IndependentConsumer
+[15/16] Applying IndependentConsumer
+Build of product 'IndependentConsumer' complete! (3.63s)
+Independent SwiftJLI consumer: synthetic storage and common API calls passed; no JPEG codec is implemented.

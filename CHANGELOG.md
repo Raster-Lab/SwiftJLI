@@ -1,5 +1,15 @@
 # Change log
 
+- Final Milestone 1 review: prevent image publication when cancellation occurs inside provider sealing/validation; deterministic regressions and full checks pass.
+
+## Unreleased — Milestone 1 contract implementation, 2026-09-18
+
+- Added an independent Swift 6.2-minimum package in Swift 6 language mode, checked sample/plane descriptors, resource profiles and explicit errors.
+- Implemented owning sample storage, opaque exclusive write leases, atomic seal/abort lifecycle, retained immutable images and checked unsigned 16-bit sample helpers.
+- Added common encoder/decoder API shapes with truthful empty capabilities and explicit unsupported-operation errors. No JPEG algorithm, real inspector, CLI or transcoder is implemented.
+- Added synthetic descriptor, lifetime, adapter, concurrent access, cancellation, resource and independent-consumer coverage. Exact executed commands and remaining gates are in `Documentation/MILESTONE1.md`.
+- Kept predecessor algorithms, `JLIDICOM`, `JLIBench` and their third-party fixture/oracle qualification deferred to the later migration milestones.
+
 ## Unreleased — documentation foundation, 2026-09-17
 
 - Defined the standalone SwiftJLI successor and intended first stable version 1.0.0.

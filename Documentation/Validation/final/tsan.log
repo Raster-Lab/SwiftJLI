@@ -1,0 +1,89 @@
+Building for debugging...
+[0/7] <workspace>/work/final-validation/SwiftJLI/tsan/arm64-apple-macosx/debug/SwiftJLIPackageTests.derived/runner.swift
+[1/7] Write sources
+[4/7] Write swift-version--58304C5D6DBC2206.txt
+[6/11] Compiling SwiftJLI CodecAPI.swift
+[7/11] Compiling SwiftJLI Errors.swift
+[8/11] Compiling SwiftJLI Image.swift
+[9/11] Emitting module SwiftJLI
+[10/14] Compiling SwiftJLI ImageDescriptor.swift
+[11/14] Compiling SwiftJLI ImageStorage.swift
+[12/14] Compiling SwiftJLI Options.swift
+[13/18] Emitting module SwiftJLITests
+[14/18] Compiling SwiftJLITests APITests.swift
+[15/18] Compiling SwiftJLITests CancellationPublicationTests.swift
+[16/18] Compiling SwiftJLITests DescriptorTests.swift
+[17/20] Compiling SwiftJLITests LimitTests.swift
+[18/20] Compiling SwiftJLITests OwnershipTests.swift
+[19/22] Compiling SwiftJLIPackageTests runner.swift
+[20/22] Emitting module SwiftJLIPackageTests
+[20/22] Write Objects.LinkFileList
+[21/22] Linking SwiftJLIPackageTests
+Build complete! (7.90s)
+􀟈  Test run started.
+􀄵  Testing Library Version: 2084
+􀄵  Target Platform: arm64e-apple-macos14.0
+􀟈  Test paddedStorageCountsTowardsDecodedLimit() started.
+􀟈  Test metadataAndDestinationLimitsUseCallerBudget() started.
+􀟈  Test adaptersShareWriterAuthorityAndRejectForgedLease() started.
+􀟈  Test imageRetainsAdapterUntilLastImageReleaseExactlyOnce() started.
+􀟈  Test concurrentAdaptersReserveExactlyOneWriter() started.
+􀟈  Test failedFillInvalidatesDestination() started.
+􀟈  Test cancellationIsCheckedBeforeAllocatingStorage() started.
+􀟈  Test safeSampleAccessHonoursExplicitBigEndian() started.
+􀟈  Test shortCapacityAndInvalidStrideAreRejected() started.
+􀟈  Test cancellationDuringSyntheticRowsInvalidatesDestination() started.
+􀟈  Test invalidResourceProfilesAndProgressFailPredictably() started.
+􀟈  Test independentAllocationAndMemoryCeilingsAreEnforced() started.
+􀟈  Test nativeByteOrderIsResolvedAndColourMeaningValidated() started.
+􀟈  Test sealedOwnerSupportsConcurrentReadersAndNestedRead() started.
+􀟈  Test paddedOddSizedSamplesPreservePrecision(_:) started.
+􀟈  Test sameTokenCannotAuthoriseConcurrentOverlappingBorrows() started.
+􀟈  Test planarDescriptorsMapEveryComponentAndRejectOverlap() started.
+􀟈  Test reentrantLeaseOperationsRejectWithoutDeadlocking() started.
+􀟈  Test cancellationInProviderFinalisationPreventsPublication(_:) started.
+􀟈  Test publicOperationsRejectCodecWorkAndAdvertiseEmptyCapabilities() started.
+􀟈  Test abandonedDestinationInvalidatesItsReservedOwner() started.
+􀟈  Test pixelAndDimensionLimitsRejectBeforeAllocation() started.
+􀟈  Test safeSampleWriterRejectsOutOfRangeWithoutTruncating() started.
+􀟈  Test unknownMeasurementsStayUnknownAndMetadataIsBounded() started.
+􀟈  Test configurationsAndBackendRequestsRejectUnsupportedChoices() started.
+􀟈  Test extremeIntegerInputsThrowWithoutOverflowTraps() started.
+􀟈  Test explicitLargerMetadataLimitIsHonoured() started.
+􀟈  Test meaningfulPrecisionRejectsInvalidValues() started.
+􀟈  Test decoderPreservesTaskCancellationError() started.
+􀟈  Test case passing 1 argument precision → 12 to paddedOddSizedSamplesPreservePrecision(_:) started.
+􀟈  Test case passing 1 argument precision → 16 to paddedOddSizedSamplesPreservePrecision(_:) started.
+􀟈  Test case passing 1 argument point → .sealing to cancellationInProviderFinalisationPreventsPublication(_:) started.
+􀟈  Test case passing 1 argument point → .validatingSealedStorage to cancellationInProviderFinalisationPreventsPublication(_:) started.
+􁁛  Test safeSampleAccessHonoursExplicitBigEndian() passed after 0.001 seconds.
+􁁛  Test adaptersShareWriterAuthorityAndRejectForgedLease() passed after 0.001 seconds.
+􁁛  Test imageRetainsAdapterUntilLastImageReleaseExactlyOnce() passed after 0.001 seconds.
+􁁛  Test paddedOddSizedSamplesPreservePrecision(_:) with 2 test cases passed after 0.001 seconds.
+􁁛  Test reentrantLeaseOperationsRejectWithoutDeadlocking() passed after 0.001 seconds.
+􁁛  Test failedFillInvalidatesDestination() passed after 0.001 seconds.
+􁁛  Test abandonedDestinationInvalidatesItsReservedOwner() passed after 0.001 seconds.
+􁁛  Test paddedStorageCountsTowardsDecodedLimit() passed after 0.001 seconds.
+􁁛  Test unknownMeasurementsStayUnknownAndMetadataIsBounded() passed after 0.001 seconds.
+􁁛  Test planarDescriptorsMapEveryComponentAndRejectOverlap() passed after 0.001 seconds.
+􁁛  Test nativeByteOrderIsResolvedAndColourMeaningValidated() passed after 0.001 seconds.
+􁁛  Test pixelAndDimensionLimitsRejectBeforeAllocation() passed after 0.001 seconds.
+􁁛  Test publicOperationsRejectCodecWorkAndAdvertiseEmptyCapabilities() passed after 0.001 seconds.
+􁁛  Test cancellationIsCheckedBeforeAllocatingStorage() passed after 0.001 seconds.
+􁁛  Test sealedOwnerSupportsConcurrentReadersAndNestedRead() passed after 0.001 seconds.
+􁁛  Test configurationsAndBackendRequestsRejectUnsupportedChoices() passed after 0.001 seconds.
+􁁛  Test independentAllocationAndMemoryCeilingsAreEnforced() passedwarning: '--build-system native' has been deprecated and will be removed in a future release; please report an issue at https://github.com/swiftlang/swift-package-manager/issues if you are unable to adopt the default build system.
+ after 0.002 seconds.
+􁁛  Test metadataAndDestinationLimitsUseCallerBudget() passed after 0.002 seconds.
+􁁛  Test meaningfulPrecisionRejectsInvalidValues() passed after 0.001 seconds.
+􁁛  Test invalidResourceProfilesAndProgressFailPredictably() passed after 0.002 seconds.
+􁁛  Test safeSampleWriterRejectsOutOfRangeWithoutTruncating() passed after 0.002 seconds.
+􁁛  Test decoderPreservesTaskCancellationError() passed after 0.001 seconds.
+􁁛  Test shortCapacityAndInvalidStrideAreRejected() passed after 0.002 seconds.
+􁁛  Test cancellationDuringSyntheticRowsInvalidatesDestination() passed after 0.002 seconds.
+􁁛  Test concurrentAdaptersReserveExactlyOneWriter() passed after 0.002 seconds.
+􁁛  Test sameTokenCannotAuthoriseConcurrentOverlappingBorrows() passed after 0.002 seconds.
+􁁛  Test cancellationInProviderFinalisationPreventsPublication(_:) with 2 test cases passed after 0.002 seconds.
+􁁛  Test extremeIntegerInputsThrowWithoutOverflowTraps() passed after 0.002 seconds.
+􁁛  Test explicitLargerMetadataLimitIsHonoured() passed after 0.006 seconds.
+􁁛  Test run with 29 tests in 0 suites passed after 0.007 seconds.
