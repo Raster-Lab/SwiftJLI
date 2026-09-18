@@ -1,6 +1,8 @@
 # Contributing
 
-Start with `AGENTS.md` and `IMPLEMENTATION.md`. This repository starts as a documentation foundation; implementation is staged. Keep pull requests focused and preserve independent package consumption.
+Start with `AGENTS.md` and `IMPLEMENTATION.md`. Milestone 1 implements API shapes and owning storage; codec implementation remains staged. Keep pull requests focused and preserve independent package consumption.
+
+[MIGRATION.md](MIGRATION.md) guides application upgrades from JLISwift. Update its mappings, executable example and current-versus-planned status when changing the public API or qualifying a codec capability.
 
 Every behavioural change needs relevant unit/regression tests. Parser or ownership changes need the matching security/lifetime checks; hot-path changes need controlled benchmark evidence. Public common API changes require the same contract revision in all four repositories and updated example/conformance tests. Codec-specific exceptions need an explicit reason.
 

@@ -15,6 +15,7 @@ Swift 6.2 minimum, Swift 6 language mode and complete concurrency checking. Appl
 The current implementation is **Milestone 1: API and memory-contract feasibility**, using synthetic buffers. See [exact implementation and validation evidence](Documentation/MILESTONE1.md). Codec migration and the first real shared-storage transcode require the separately assigned Milestones 2 and 3.
 
 - [Coding-agent entry point](AGENTS.md) and [codec-specific implementation plan](IMPLEMENTATION.md).
+- [Application migration guide: JLISwift → SwiftJLI](MIGRATION.md), including current limitations, API mappings and a staged cutover checklist for humans and coding agents.
 - [Suite policy](Documentation/SUITE_POLICY.md) and [common API](Documentation/COMMON_API.md).
 - [Memory ownership and no-copy hand-off](Documentation/MEMORY_CONTRACT.md).
 - [Unit, regression and security testing](Documentation/TESTING.md).
