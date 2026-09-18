@@ -1,6 +1,8 @@
 # Migrating applications from JLISwift to SwiftJLI
 
-This guide is for application maintainers and coding agents. It describes **Milestone 1, contract 0.2.1**: SwiftJLI provides public API shapes and owning sample storage, but **does not yet inspect, encode or decode JPEG**. Keep JLISwift serving real codec operations until the particular successor modes your application needs are implemented and qualified. Renaming the dependency and imports alone is insufficient.
+The successor now requires Swift 6.4 and retains its OS 26 deployment floors. See the [Swift 6.4 upgrade record](Documentation/Engineering/Swift64/README.md) for development versioning and validation; current codec availability is unchanged.
+
+This guide is for application maintainers and coding agents. It describes **Milestone 1, contract 0.3.0**: SwiftJLI provides public API shapes and owning sample storage, but **does not yet inspect, encode or decode JPEG**. Keep JLISwift serving real codec operations until the particular successor modes your application needs are implemented and qualified. Renaming the dependency and imports alone is insufficient.
 
 The predecessor API was inspected at [JLISwift `9f1c6eb609fe6f26498db82b13df6b305630a374`](https://github.com/Raster-Lab/JLISwift/tree/9f1c6eb609fe6f26498db82b13df6b305630a374), not an assumed version range. Its historical `v0.5.0` tag is a separate reference. See [provenance](HISTORY.md), [current implementation evidence](Documentation/MILESTONE1.md) and the [remaining milestones](IMPLEMENTATION.md). Source inspection does not establish that predecessor codec tests passed.
 
@@ -13,10 +15,10 @@ Record the application's resolved JLISwift commit, tools/SDK versions, deploymen
 | Repository | `https://github.com/Raster-Lab/JLISwift.git` | `https://github.com/Raster-Lab/SwiftJLI.git` |
 | Package / core product / import | `JLISwift` | `SwiftJLI` |
 | Optional products | `JLIDICOM`, executable `JLIBench` | No equivalents currently shipped; retain or explicitly defer |
-| Swift toolchain | Pinned manifest requires 6.2 | 6.2 minimum; Swift 6 language mode |
+| Swift toolchain | Pinned manifest requires 6.2 | 6.4 minimum; Swift 6 language mode |
 | Apple deployment floors | macOS 14, iOS/tvOS 17, watchOS 10, visionOS 1 | All 26.0 |
 
-The intended SwiftJLI `1.0.0` is **not a published release requirement**. For a migration trial, use a reviewed checkout with `.package(path: "../SwiftJLI")`; add `.product(name: "SwiftJLI", package: "SwiftJLI")` to the consumer target's dependencies. Alternatively select an actually available, reviewed revision of the new repository and record its full SHA in the package requirement. Do not invent a `from: "1.0.0"` requirement or rely on moving `main`. Preserve `Package.resolved` in the application where applicable.
+The intended SwiftJLI `1.1.0` is **not a published release requirement**. For a migration trial, use a reviewed checkout with `.package(path: "../SwiftJLI")`; add `.product(name: "SwiftJLI", package: "SwiftJLI")` to the consumer target's dependencies. Alternatively select an actually available, reviewed revision of the new repository and record its full SHA in the package requirement. Do not invent a `from: "1.1.0"` requirement or rely on moving `main`. Preserve `Package.resolved` in the application where applicable.
 
 In Xcode, add the successor package/product to an experimental target and use `import SwiftJLI`. Keep older deployment targets on their existing dependency while evaluating the OS 26 requirement. Linux and other platform qualification must be checked against [recorded evidence](Documentation/MILESTONE1.md), rather than inferred from the [intended platform matrix](Documentation/PLATFORMS.md).
 

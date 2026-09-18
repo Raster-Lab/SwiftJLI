@@ -4,7 +4,7 @@ Read AGENTS.md and every common contract document first. Milestone 1 implements 
 
 ## Source and destination
 
-Predecessor: [Raster-Lab/JLISwift](https://github.com/Raster-Lab/JLISwift) at inspected SHA `9f1c6eb609fe6f26498db82b13df6b305630a374`. Highest stable-shaped tag observed: `v0.5.0` (resolve independently before choosing it as a baseline). Target module/product: `SwiftJLI`. Target CLI: `swiftjli`. Intended first stable library version: `1.0.0`.
+Predecessor: [Raster-Lab/JLISwift](https://github.com/Raster-Lab/JLISwift) at inspected SHA `9f1c6eb609fe6f26498db82b13df6b305630a374`. Highest stable-shaped tag observed: `v0.5.0` (resolve independently before choosing it as a baseline). Target module/product: `SwiftJLI`. Target CLI: `swiftjli`. Intended first stable library version: `1.1.0`.
 
 Do not migrate code from moving main without recording the selected revision. Reproduce relevant source tests and inspect source-level capabilities. Existing test totals and benchmark claims are historical, not successor acceptance evidence.
 
@@ -14,7 +14,7 @@ Do not migrate code from moving main without recording the selected revision. Re
 
 | Milestone | Work | Exit evidence |
 | --- | --- | --- |
-| 1 — contract feasibility | Establish Swift 6.2 package, independent local API/owning-memory types, descriptor validation and safe adapter experiment; no codec algorithm migration | Compiling equivalent public calls, lifecycle/race/error tests, standalone consumer build and contract issues resolved explicitly |
+| 1 — contract feasibility | Establish Swift 6.4 package, independent local API/owning-memory types, descriptor validation and safe adapter experiment; no codec algorithm migration | Compiling equivalent public calls, lifecycle/race/error tests, standalone consumer build and contract issues resolved explicitly |
 | 2 — migration baseline | Inventory predecessor subsystems/products; select and migrate the smallest native scalar lossless path with MIT/provenance reconciliation | Pinned predecessor comparison, independent decode/encode validation, exact sample/precision results, no new runtime codec dependency |
 | 3 — shared-storage path | Direct final decode into caller storage and encode from compatible sealed storage | Required-sharing copy/allocation/lifetime proof; first suite pair or corresponding codec extension passes |
 | 4 — feature/platform coverage | Extend supported modes/layouts, CLI, optional acceleration and all required OS/architecture paths | Capability matrix, codec-specific regressions, platform results, security and performance evidence |

@@ -1,0 +1,66 @@
+Building for debugging...
+[Planning deferred tasks]
+[28 / 52]
+[29 / 53] SwiftJLI
+[36 / 94]
+[39 / 94]
+[43 / 94]
+[47 / 94]
+[48 / 94]
+[51 / 94]
+[53 / 94]
+[55 / 94]
+[57 / 94]
+[60 / 94]
+[62 / 94]
+[63 / 94]
+[66 / 94] SwiftJLI
+[74 / 94] SwiftJLI
+[76 / 94] SwiftJLITests-product
+[84 / 95] SwiftJLITests-product
+[85 / 105]
+[89 / 105] SwiftJLITests-product
+[91 / 105] SwiftJLITests-product
+[96 / 105] SwiftJLITests-product
+[98 / 105] SwiftJLITests-product
+[99 / 105] SwiftJLITests-product
+[99 / 105] AllIncludingTests
+[99 / 105] SwiftJLITests-product
+[101 / 105] SwiftJLITests-product
+[103 / 105] SwiftJLITests-product
+Build complete! (9.54 secs)
+SwiftJLITests.Swift64SampleAccessTests/initialisesExternalSampleBytesAtOddAddressWithoutChangingPadding()
+SwiftJLITests.Swift64SampleAccessTests/outOfPrecisionWriteInvalidatesDestination()
+SwiftJLITests.Swift64SampleAccessTests/readsIndependentGoldenBytesFromOddPhysicalAddress()
+SwiftJLITests.Swift64SampleAccessTests/refusesShortProviderBeforeLoadingSample()
+SwiftJLITests.Swift64SampleAccessTests/rejectsCoordinatesBeforeOffsetArithmetic()
+SwiftJLITests.Swift64SampleAccessTests/writesGoldenBytesForPackedAndPadded12And16BitSamples()
+SwiftJLITests.abandonedDestinationInvalidatesItsReservedOwner()
+SwiftJLITests.adaptersShareWriterAuthorityAndRejectForgedLease()
+SwiftJLITests.cancellationDuringSyntheticRowsInvalidatesDestination()
+SwiftJLITests.cancellationInProviderFinalisationPreventsPublication(_:)
+SwiftJLITests.cancellationIsCheckedBeforeAllocatingStorage()
+SwiftJLITests.concurrentAdaptersReserveExactlyOneWriter()
+SwiftJLITests.configurationsAndBackendRequestsRejectUnsupportedChoices()
+SwiftJLITests.decoderPreservesTaskCancellationError()
+SwiftJLITests.explicitLargerMetadataLimitIsHonoured()
+SwiftJLITests.extremeIntegerInputsThrowWithoutOverflowTraps()
+SwiftJLITests.failedFillInvalidatesDestination()
+SwiftJLITests.imageRetainsAdapterUntilLastImageReleaseExactlyOnce()
+SwiftJLITests.independentAllocationAndMemoryCeilingsAreEnforced()
+SwiftJLITests.invalidResourceProfilesAndProgressFailPredictably()
+SwiftJLITests.meaningfulPrecisionRejectsInvalidValues()
+SwiftJLITests.metadataAndDestinationLimitsUseCallerBudget()
+SwiftJLITests.nativeByteOrderIsResolvedAndColourMeaningValidated()
+SwiftJLITests.paddedOddSizedSamplesPreservePrecision(_:)
+SwiftJLITests.paddedStorageCountsTowardsDecodedLimit()
+SwiftJLITests.pixelAndDimensionLimitsRejectBeforeAllocation()
+SwiftJLITests.planarDescriptorsMapEveryComponentAndRejectOverlap()
+SwiftJLITests.publicOperationsRejectCodecWorkAndAdvertiseEmptyCapabilities()
+SwiftJLITests.reentrantLeaseOperationsRejectWithoutDeadlocking()
+SwiftJLITests.safeSampleAccessHonoursExplicitBigEndian()
+SwiftJLITests.safeSampleWriterRejectsOutOfRangeWithoutTruncating()
+SwiftJLITests.sameTokenCannotAuthoriseConcurrentOverlappingBorrows()
+SwiftJLITests.sealedOwnerSupportsConcurrentReadersAndNestedRead()
+SwiftJLITests.shortCapacityAndInvalidStrideAreRejected()
+SwiftJLITests.unknownMeasurementsStayUnknownAndMetadataIsBounded()
