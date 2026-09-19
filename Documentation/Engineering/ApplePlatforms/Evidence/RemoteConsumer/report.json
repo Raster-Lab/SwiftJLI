@@ -1,0 +1,44 @@
+{
+  "repository": "SwiftJLI",
+  "revision": "a520962dcb99884c337a1bf528bfcacbec0c1dba",
+  "argv": [
+    "xcrun",
+    "swift",
+    "run",
+    "--build-system",
+    "swiftbuild",
+    "--jobs",
+    "2",
+    "--package-path",
+    "<workspace>/work/apple-platform-qualification/remote-consumers/RemoteConsumer-SwiftJLI",
+    "--scratch-path",
+    "<workspace>/work/apple-platform-qualification/remote-consumers/RemoteConsumer-SwiftJLI/build",
+    "--cache-path",
+    "<workspace>/work/apple-platform-qualification/remote-consumers/RemoteConsumer-SwiftJLI/cache",
+    "--config-path",
+    "<workspace>/work/apple-platform-qualification/remote-consumers/RemoteConsumer-SwiftJLI/config",
+    "--security-path",
+    "<workspace>/work/apple-platform-qualification/remote-consumers/RemoteConsumer-SwiftJLI/security",
+    "Consumer"
+  ],
+  "cwd": "<workspace>/work/apple-platform-qualification/remote-consumers/RemoteConsumer-SwiftJLI",
+  "environment": {
+    "DEVELOPER_DIR": "/Applications/Xcode.app/Contents/Developer"
+  },
+  "exit_code": 0,
+  "resolved_dependencies": [
+    {
+      "identity": "swiftjli",
+      "kind": "remoteSourceControl",
+      "location": "https://github.com/Raster-Lab/SwiftJLI.git",
+      "state": {
+        "revision": "a520962dcb99884c337a1bf528bfcacbec0c1dba"
+      }
+    }
+  ],
+  "tested_input_hashes_match": true,
+  "consumer_sha256": {
+    "Package.swift": "685edc17e72edaa18416d564e008f7a67bfec4fcfe33111757fbb5cef6e1ef37",
+    "Sources/Consumer/main.swift": "f4149d6d8558198ed9a5a66446ba075cfe718777da66b1e2074de80c5d8c4232"
+  }
+}
