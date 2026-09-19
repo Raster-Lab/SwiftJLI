@@ -111,3 +111,7 @@ Set `ResourceLimits` for the application's input, destination, metadata, workspa
 - [ ] Demonstrate rollback and persisted-file compatibility, and explicitly retain/defer every `JLIDICOM`, benchmark and CLI dependency.
 
 Coding agents: read [AGENTS.md](AGENTS.md) and [IMPLEMENTATION.md](IMPLEMENTATION.md), then use this checklist in the application PR. Report implemented, tested, unsupported and unexecuted items separately. This guide authorises no further codec milestone and makes no stable-release or full-platform claim.
+
+## Apple runtime qualification update
+
+See [Apple platform runtime qualification](Documentation/Engineering/ApplePlatforms/README.md) for executed OS 27 simulator, macOS and Mac Catalyst tests and the reproducible headless runner. This qualifies the current API/storage foundation; the existing codec migration and production-cutover gates remain in force.

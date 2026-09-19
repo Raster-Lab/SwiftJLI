@@ -1,0 +1,149 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test -scheme SwiftJLI-Package -configuration Release -destination "platform=tvOS Simulator,id=6B165585-232B-4CC5-AA24-D7134C486D80" -destination-timeout 60 -jobs 2 CODE_SIGNING_ALLOWED=NO -derivedDataPath /private/tmp/SwiftJLI-apple-tests-gfqj7t5r/tvos -parallel-testing-enabled NO -enableCodeCoverage NO -test-timeouts-enabled YES -default-test-execution-time-allowance 60 -maximum-test-execution-time-allowance 120 -resultBundlePath <workspace>/work/apple-platform-qualification/final/SwiftJLI/spatial-tv/tvos-release.xcresult
+
+Build settings from command line:
+    CODE_SIGNING_ALLOWED = NO
+
+Resolve Package Graph
+2026-09-19 16:59:43.690 xcodebuild[73934:3959505] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+
+
+Resolved source packages:
+  SwiftJLI: <workspace>/outputs/SwiftJLI
+
+Writing result bundle at path:
+	<workspace>/work/apple-platform-qualification/final/SwiftJLI/spatial-tv/tvos-release.xcresult
+
+Build Preparation
+Build task concurrency set to 2 via user default IDEBuildOperationMaxNumberOfConcurrentCompileTasks
+
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (4 targets)
+    Target 'swiftjli-product' in project 'SwiftJLI'
+        ➜ Explicit dependency on target 'SwiftJLI' in project 'SwiftJLI'
+    Target 'SwiftJLI-product' in project 'SwiftJLI'
+        ➜ Explicit dependency on target 'SwiftJLI' in project 'SwiftJLI'
+    Target 'SwiftJLITests-product' in project 'SwiftJLI'
+        ➜ Explicit dependency on target 'SwiftJLI' in project 'SwiftJLI'
+    Target 'SwiftJLI' in project 'SwiftJLI' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ClangStatCache /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/AppleTVSimulator.platform/Developer/SDKs/AppleTVSimulator27.0.sdk /tmp/SwiftJLI-apple-tests-gfqj7t5r/tvos/SDKStatCaches.noindex/appletvsimulator27.0-24J360-e829b21a6f8c9b70876ba0858053c04421f0701ac8d55f1e5a066df852c2cd87.sdkstatcache
+    cd <workspace>/outputs/SwiftJLI/.swiftpm/xcode
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/AppleTVSimulator.platform/Developer/SDKs/AppleTVSimulator27.0.sdk -o /tmp/SwiftJLI-apple-tests-gfqj7t5r/tvos/SDKStatCaches.noindex/appletvsimulator27.0-24J360-e829b21a6f8c9b70876ba0858053c04421f0701ac8d55f1e5a066df852c2cd87.sdkstatcache
+
+PruneExplicitPrecompiledModules /tmp/SwiftJLI-apple-tests-gfqj7t5r/tvos/SDKExplicitPrecompiledModules
+
+PruneExplicitPrecompiledModules /tmp/SwiftJLI-apple-tests-gfqj7t5r/tvos/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules
+
+PruneExplicitPrecompiledModules /tmp/SwiftJLI-apple-tests-gfqj7t5r/tvos/Build/Intermediates.noindex/ExplicitPrecompiledModules
+
+Test Suite 'All tests' started at 2026-09-19 16:59:46.585.
+Test Suite 'All tests' passed at 2026-09-19 16:59:46.587.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.002) seconds
+◇ Test run started.
+↳ Testing Library Version: 2084
+↳ Target Platform: arm64-apple-tvos17.0-simulator
+◇ Test publicOperationsRejectCodecWorkAndAdvertiseEmptyCapabilities() started.
+✔ Test publicOperationsRejectCodecWorkAndAdvertiseEmptyCapabilities() passed after 0.009 seconds.
+◇ Test configurationsAndBackendRequestsRejectUnsupportedChoices() started.
+✔ Test configurationsAndBackendRequestsRejectUnsupportedChoices() passed after 0.001 seconds.
+◇ Test safeSampleWriterRejectsOutOfRangeWithoutTruncating() started.
+✔ Test safeSampleWriterRejectsOutOfRangeWithoutTruncating() passed after 0.001 seconds.
+◇ Test cancellationDuringSyntheticRowsInvalidatesDestination() started.
+✔ Test cancellationDuringSyntheticRowsInvalidatesDestination() passed after 0.001 seconds.
+◇ Test cancellationIsCheckedBeforeAllocatingStorage() started.
+✔ Test cancellationIsCheckedBeforeAllocatingStorage() passed after 0.001 seconds.
+◇ Test unknownMeasurementsStayUnknownAndMetadataIsBounded() started.
+✔ Test unknownMeasurementsStayUnknownAndMetadataIsBounded() passed after 0.001 seconds.
+◇ Test metadataAndDestinationLimitsUseCallerBudget() started.
+✔ Test metadataAndDestinationLimitsUseCallerBudget() passed after 0.001 seconds.
+◇ Test explicitLargerMetadataLimitIsHonoured() started.
+✔ Test explicitLargerMetadataLimitIsHonoured() passed after 0.005 seconds.
+◇ Test safeSampleAccessHonoursExplicitBigEndian() started.
+✔ Test safeSampleAccessHonoursExplicitBigEndian() passed after 0.001 seconds.
+◇ Test decoderPreservesTaskCancellationError() started.
+✔ Test decoderPreservesTaskCancellationError() passed after 0.008 seconds.
+◇ Test cancellationInProviderFinalisationPreventsPublication(_:) started.
+◇ Test case passing 1 argument point → .sealing to cancellationInProviderFinalisationPreventsPublication(_:) started.
+​◇ Test case passing 1 argument point → .validatingSealedStorage to cancellationInProviderFinalisationPreventsPublication(_:) started.
+​✔ Test cancellationInProviderFinalisationPreventsPublication(_:) with 2 test cases passed after 0.002 seconds.
+◇ Test paddedOddSizedSamplesPreservePrecision(_:) started.
+◇ Test case passing 1 argument precision → 12 to paddedOddSizedSamplesPreservePrecision(_:) started.
+​◇ Test case passing 1 argument precision → 16 to paddedOddSizedSamplesPreservePrecision(_:) started.
+​✔ Test paddedOddSizedSamplesPreservePrecision(_:) with 2 test cases passed after 0.023 seconds.
+◇ Test shortCapacityAndInvalidStrideAreRejected() started.
+✔ Test shortCapacityAndInvalidStrideAreRejected() passed after 0.001 seconds.
+◇ Test extremeIntegerInputsThrowWithoutOverflowTraps() started.
+✔ Test extremeIntegerInputsThrowWithoutOverflowTraps() passed after 0.001 seconds.
+◇ Test meaningfulPrecisionRejectsInvalidValues() started.
+✔ Test meaningfulPrecisionRejectsInvalidValues() passed after 0.001 seconds.
+◇ Test planarDescriptorsMapEveryComponentAndRejectOverlap() started.
+✔ Test planarDescriptorsMapEveryComponentAndRejectOverlap() passed after 0.001 seconds.
+◇ Test nativeByteOrderIsResolvedAndColourMeaningValidated() started.
+✔ Test nativeByteOrderIsResolvedAndColourMeaningValidated() passed after 0.001 seconds.
+◇ Test independentAllocationAndMemoryCeilingsAreEnforced() started.
+✔ Test independentAllocationAndMemoryCeilingsAreEnforced() passed after 0.001 seconds.
+◇ Test paddedStorageCountsTowardsDecodedLimit() started.
+✔ Test paddedStorageCountsTowardsDecodedLimit() passed after 0.001 seconds.
+◇ Test pixelAndDimensionLimitsRejectBeforeAllocation() started.
+✔ Test pixelAndDimensionLimitsRejectBeforeAllocation() passed after 0.001 seconds.
+◇ Test invalidResourceProfilesAndProgressFailPredictably() started.
+✔ Test invalidResourceProfilesAndProgressFailPredictably() passed after 0.001 seconds.
+◇ Test adaptersShareWriterAuthorityAndRejectForgedLease() started.
+✔ Test adaptersShareWriterAuthorityAndRejectForgedLease() passed after 0.001 seconds.
+◇ Test reentrantLeaseOperationsRejectWithoutDeadlocking() started.
+✔ Test reentrantLeaseOperationsRejectWithoutDeadlocking() passed after 0.001 seconds.
+◇ Test sameTokenCannotAuthoriseConcurrentOverlappingBorrows() started.
+✔ Test sameTokenCannotAuthoriseConcurrentOverlappingBorrows() passed after 0.011 seconds.
+◇ Test concurrentAdaptersReserveExactlyOneWriter() started.
+✔ Test concurrentAdaptersReserveExactlyOneWriter() passed after 0.005 seconds.
+◇ Test imageRetainsAdapterUntilLastImageReleaseExactlyOnce() started.
+✔ Test imageRetainsAdapterUntilLastImageReleaseExactlyOnce() passed after 0.001 seconds.
+◇ Test sealedOwnerSupportsConcurrentReadersAndNestedRead() started.
+✔ Test sealedOwnerSupportsConcurrentReadersAndNestedRead() passed after 0.001 seconds.
+◇ Test failedFillInvalidatesDestination() started.
+✔ Test failedFillInvalidatesDestination() passed after 0.001 seconds.
+◇ Test abandonedDestinationInvalidatesItsReservedOwner() started.
+✔ Test abandonedDestinationInvalidatesItsReservedOwner() passed after 0.001 seconds.
+◇ Test platformDefaultsEnforceWatchAdmissionBeforeAllocation() started.
+✔ Test platformDefaultsEnforceWatchAdmissionBeforeAllocation() passed after 0.001 seconds.
+◇ Suite "Swift 6.4 sample access" started.
+◇ Test readsIndependentGoldenBytesFromOddPhysicalAddress() started.
+✔ Test readsIndependentGoldenBytesFromOddPhysicalAddress() passed after 0.003 seconds.
+◇ Test writesGoldenBytesForPackedAndPadded12And16BitSamples() started.
+✔ Test writesGoldenBytesForPackedAndPadded12And16BitSamples() passed after 0.001 seconds.
+◇ Test initialisesExternalSampleBytesAtOddAddressWithoutChangingPadding() started.
+✔ Test initialisesExternalSampleBytesAtOddAddressWithoutChangingPadding() passed after 0.001 seconds.
+◇ Test refusesShortProviderBeforeLoadingSample() started.
+✔ Test refusesShortProviderBeforeLoadingSample() passed after 0.001 seconds.
+◇ Test rejectsCoordinatesBeforeOffsetArithmetic() started.
+✔ Test rejectsCoordinatesBeforeOffsetArithmetic() passed after 0.001 seconds.
+◇ Test outOfPrecisionWriteInvalidatesDestination() started.
+✔ Test outOfPrecisionWriteInvalidatesDestination() passed after 0.001 seconds.
+✔ Suite "Swift 6.4 sample access" passed after 0.005 seconds.
+✔ Test run with 36 tests in 1 suite passed after 0.093 seconds.
+2026-09-19 16:59:46.971 xcodebuild[73934:3959505] [MT] IDETestOperationsObserverDebug: 2.861 elapsed -- Testing started completed.
+2026-09-19 16:59:46.971 xcodebuild[73934:3959505] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-19 16:59:46.971 xcodebuild[73934:3959505] [MT] IDETestOperationsObserverDebug: 2.861 sec, +2.861 sec -- end
+
+Test session results, code coverage, and logs:
+	<workspace>/work/apple-platform-qualification/final/SwiftJLI/spatial-tv/tvos-release.xcresult
+
+** TEST SUCCEEDED **
+
+Testing started

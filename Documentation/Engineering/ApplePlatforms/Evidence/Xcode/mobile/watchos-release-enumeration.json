@@ -1,0 +1,123 @@
+{
+  "errors" : [
+
+  ],
+  "values" : [
+    {
+      "disabledTests" : [
+
+      ],
+      "enabledTests" : [
+        {
+          "identifier" : "SwiftJLITests/Swift64SampleAccessTests/initialisesExternalSampleBytesAtOddAddressWithoutChangingPadding()"
+        },
+        {
+          "identifier" : "SwiftJLITests/Swift64SampleAccessTests/outOfPrecisionWriteInvalidatesDestination()"
+        },
+        {
+          "identifier" : "SwiftJLITests/Swift64SampleAccessTests/readsIndependentGoldenBytesFromOddPhysicalAddress()"
+        },
+        {
+          "identifier" : "SwiftJLITests/Swift64SampleAccessTests/refusesShortProviderBeforeLoadingSample()"
+        },
+        {
+          "identifier" : "SwiftJLITests/Swift64SampleAccessTests/rejectsCoordinatesBeforeOffsetArithmetic()"
+        },
+        {
+          "identifier" : "SwiftJLITests/Swift64SampleAccessTests/writesGoldenBytesForPackedAndPadded12And16BitSamples()"
+        },
+        {
+          "identifier" : "SwiftJLITests/abandonedDestinationInvalidatesItsReservedOwner()"
+        },
+        {
+          "identifier" : "SwiftJLITests/adaptersShareWriterAuthorityAndRejectForgedLease()"
+        },
+        {
+          "identifier" : "SwiftJLITests/cancellationDuringSyntheticRowsInvalidatesDestination()"
+        },
+        {
+          "identifier" : "SwiftJLITests/cancellationInProviderFinalisationPreventsPublication(_:)"
+        },
+        {
+          "identifier" : "SwiftJLITests/cancellationIsCheckedBeforeAllocatingStorage()"
+        },
+        {
+          "identifier" : "SwiftJLITests/concurrentAdaptersReserveExactlyOneWriter()"
+        },
+        {
+          "identifier" : "SwiftJLITests/configurationsAndBackendRequestsRejectUnsupportedChoices()"
+        },
+        {
+          "identifier" : "SwiftJLITests/decoderPreservesTaskCancellationError()"
+        },
+        {
+          "identifier" : "SwiftJLITests/explicitLargerMetadataLimitIsHonoured()"
+        },
+        {
+          "identifier" : "SwiftJLITests/extremeIntegerInputsThrowWithoutOverflowTraps()"
+        },
+        {
+          "identifier" : "SwiftJLITests/failedFillInvalidatesDestination()"
+        },
+        {
+          "identifier" : "SwiftJLITests/imageRetainsAdapterUntilLastImageReleaseExactlyOnce()"
+        },
+        {
+          "identifier" : "SwiftJLITests/independentAllocationAndMemoryCeilingsAreEnforced()"
+        },
+        {
+          "identifier" : "SwiftJLITests/invalidResourceProfilesAndProgressFailPredictably()"
+        },
+        {
+          "identifier" : "SwiftJLITests/meaningfulPrecisionRejectsInvalidValues()"
+        },
+        {
+          "identifier" : "SwiftJLITests/metadataAndDestinationLimitsUseCallerBudget()"
+        },
+        {
+          "identifier" : "SwiftJLITests/nativeByteOrderIsResolvedAndColourMeaningValidated()"
+        },
+        {
+          "identifier" : "SwiftJLITests/paddedOddSizedSamplesPreservePrecision(_:)"
+        },
+        {
+          "identifier" : "SwiftJLITests/paddedStorageCountsTowardsDecodedLimit()"
+        },
+        {
+          "identifier" : "SwiftJLITests/pixelAndDimensionLimitsRejectBeforeAllocation()"
+        },
+        {
+          "identifier" : "SwiftJLITests/planarDescriptorsMapEveryComponentAndRejectOverlap()"
+        },
+        {
+          "identifier" : "SwiftJLITests/platformDefaultsEnforceWatchAdmissionBeforeAllocation()"
+        },
+        {
+          "identifier" : "SwiftJLITests/publicOperationsRejectCodecWorkAndAdvertiseEmptyCapabilities()"
+        },
+        {
+          "identifier" : "SwiftJLITests/reentrantLeaseOperationsRejectWithoutDeadlocking()"
+        },
+        {
+          "identifier" : "SwiftJLITests/safeSampleAccessHonoursExplicitBigEndian()"
+        },
+        {
+          "identifier" : "SwiftJLITests/safeSampleWriterRejectsOutOfRangeWithoutTruncating()"
+        },
+        {
+          "identifier" : "SwiftJLITests/sameTokenCannotAuthoriseConcurrentOverlappingBorrows()"
+        },
+        {
+          "identifier" : "SwiftJLITests/sealedOwnerSupportsConcurrentReadersAndNestedRead()"
+        },
+        {
+          "identifier" : "SwiftJLITests/shortCapacityAndInvalidStrideAreRejected()"
+        },
+        {
+          "identifier" : "SwiftJLITests/unknownMeasurementsStayUnknownAndMetadataIsBounded()"
+        }
+      ],
+      "testPlan" : "SwiftJLI-Package"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+Fetching https://github.com/Raster-Lab/SwiftJLI.git
+[1/765] Fetching swiftjli
+Fetched https://github.com/Raster-Lab/SwiftJLI.git (1.79s)
+Creating working copy for https://github.com/Raster-Lab/SwiftJLI.git
+Working copy of https://github.com/Raster-Lab/SwiftJLI.git resolved at a520962dcb99884c337a1bf528bfcacbec0c1dba
+Building for debugging...
+[Planning deferred tasks]
+[23 / 38]
+[24 / 39] SwiftJLI
+[31 / 80]
+[34 / 80]
+[41 / 80]
+[43 / 80]
+[47 / 80]
+[50 / 80]
+[55 / 80]
+[57 / 80]
+[58 / 80]
+[61 / 80] SwiftJLI
+[69 / 80] SwiftJLI
+[71 / 80] SwiftJLI-product
+[76 / 81] Consumer-product
+[79 / 83] Consumer-product
+[81 / 83] Consumer-product
+Build complete! (5.18 secs)
+SwiftJLI: fresh published consumer passed; sample storage works and codec operations remain unavailable.
