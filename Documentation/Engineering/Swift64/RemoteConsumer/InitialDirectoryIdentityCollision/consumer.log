@@ -1,0 +1,1 @@
+error: 'swiftjli': product 'SwiftJLI' required by package 'swiftjli' target 'MigrationExample' not found in package 'SwiftJLI'.

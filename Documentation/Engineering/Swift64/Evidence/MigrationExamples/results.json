@@ -1,0 +1,29 @@
+{
+  "SwiftJLI": {
+    "exit_code": 0,
+    "command": "xcrun swift run --disable-sandbox --build-system swiftbuild --jobs 2 --cache-path /Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/swift64/migration-examples/Consumer-SwiftJLI/cache --config-path /Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/swift64/migration-examples/Consumer-SwiftJLI/config --security-path /Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/swift64/migration-examples/Consumer-SwiftJLI/security MigrationExample",
+    "cwd": "/Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/swift64/migration-examples/Consumer-SwiftJLI",
+    "toolchain": "/Applications/Xcode.app/Contents/Developer",
+    "example_sha256": "1b68b480fb9503e04314b70252de2e2ca286c2075773f00b7f3faf8dab91a748",
+    "diff_check_exit": 0,
+    "relative_links": 40,
+    "missing_links": [],
+    "files": [
+      "AGENTS.md",
+      "CHANGELOG.md",
+      "Documentation/CLI_CONTRACT.md",
+      "Documentation/COMMON_API.md",
+      "Documentation/MEMORY_CONTRACT.md",
+      "Documentation/PERFORMANCE.md",
+      "Documentation/PLATFORMS.md",
+      "Documentation/SUITE_POLICY.md",
+      "Documentation/TESTING.md",
+      "HISTORY.md",
+      "IMPLEMENTATION.md",
+      "MIGRATION.md",
+      "README.md",
+      "Scripts/README.md"
+    ],
+    "log": "work/swift64/migration-examples/SwiftJLI.log"
+  }
+}

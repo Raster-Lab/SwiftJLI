@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "/Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/outputs/SwiftJLI/Scripts/install-cli.sh",
+    "--prefix",
+    "/usr/local",
+    "--destdir",
+    "/Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/os27/install-builds/SwiftJLI/stage",
+    "--scratch-path",
+    "/Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/os27/install-builds/SwiftJLI/build",
+    "--disable-package-sandbox"
+  ],
+  "environment": {
+    "DEVELOPER_DIR": "/Applications/Xcode.app/Contents/Developer",
+    "CLANG_MODULE_CACHE_PATH": "/Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/os27/install-builds/SwiftJLI/modules",
+    "SWIFTPM_MODULECACHE_OVERRIDE": "/Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/os27/install-builds/SwiftJLI/modules"
+  },
+  "exit_code": 0,
+  "binary_sha256": "790778099e30ffccf25a8e33af32cb9698f8fc869c07030750edbf6b2890be7e",
+  "manual_sha256": "c7daf8a1e640d7041e4f2ac41c7cd7a8d5d0f807836e5ecf2ec0e68856c98c37",
+  "version_stdout": "swiftjli 1.1.0-dev.2\n",
+  "version_exit_code": 0
+}

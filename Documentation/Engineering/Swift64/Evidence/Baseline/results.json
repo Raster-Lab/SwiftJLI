@@ -1,0 +1,45 @@
+{
+  "source_sha": "62e9502082a90bbabedf3d554b58e6dc8356b30a",
+  "records": [
+    {
+      "check": "clean-debug",
+      "command": "xcrun swift build --disable-sandbox --build-system swiftbuild --jobs 2 --cache-path /Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/swift64/baseline/SwiftJLI/cache --config-path /Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/swift64/baseline/SwiftJLI/config --security-path /Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/swift64/baseline/SwiftJLI/security --scratch-path /Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/swift64/baseline/SwiftJLI/build",
+      "cwd": "/Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/swift64/baseline/SwiftJLI/source",
+      "exit_code": 0,
+      "tests": null,
+      "log": "work/swift64/baseline/SwiftJLI/clean-debug.log"
+    },
+    {
+      "check": "incremental-debug",
+      "command": "xcrun swift build --disable-sandbox --build-system swiftbuild --jobs 2 --cache-path /Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/swift64/baseline/SwiftJLI/cache --config-path /Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/swift64/baseline/SwiftJLI/config --security-path /Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/swift64/baseline/SwiftJLI/security --scratch-path /Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/swift64/baseline/SwiftJLI/build",
+      "cwd": "/Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/swift64/baseline/SwiftJLI/source",
+      "exit_code": 0,
+      "tests": null,
+      "log": "work/swift64/baseline/SwiftJLI/incremental-debug.log"
+    },
+    {
+      "check": "discover",
+      "command": "xcrun swift test list --disable-sandbox --build-system swiftbuild --jobs 2 --cache-path /Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/swift64/baseline/SwiftJLI/cache --config-path /Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/swift64/baseline/SwiftJLI/config --security-path /Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/swift64/baseline/SwiftJLI/security --scratch-path /Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/swift64/baseline/SwiftJLI/build --disable-xctest",
+      "cwd": "/Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/swift64/baseline/SwiftJLI/source",
+      "exit_code": 0,
+      "tests": null,
+      "log": "work/swift64/baseline/SwiftJLI/discover.log"
+    },
+    {
+      "check": "debug",
+      "command": "xcrun swift test --disable-sandbox --build-system swiftbuild --jobs 2 --cache-path /Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/swift64/baseline/SwiftJLI/cache --config-path /Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/swift64/baseline/SwiftJLI/config --security-path /Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/swift64/baseline/SwiftJLI/security --scratch-path /Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/swift64/baseline/SwiftJLI/build --disable-xctest --xunit-output /Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/swift64/baseline/SwiftJLI/debug.xml",
+      "cwd": "/Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/swift64/baseline/SwiftJLI/source",
+      "exit_code": 0,
+      "tests": 29,
+      "log": "work/swift64/baseline/SwiftJLI/debug.log"
+    },
+    {
+      "check": "release",
+      "command": "xcrun swift test --disable-sandbox --build-system swiftbuild --jobs 2 --cache-path /Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/swift64/baseline/SwiftJLI/cache --config-path /Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/swift64/baseline/SwiftJLI/config --security-path /Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/swift64/baseline/SwiftJLI/security --scratch-path /Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/swift64/baseline/SwiftJLI/build -c release --disable-xctest --xunit-output /Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/swift64/baseline/SwiftJLI/release.xml",
+      "cwd": "/Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/swift64/baseline/SwiftJLI/source",
+      "exit_code": 0,
+      "tests": 29,
+      "log": "work/swift64/baseline/SwiftJLI/release.log"
+    }
+  ]
+}

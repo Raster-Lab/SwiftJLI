@@ -1,0 +1,74 @@
+[
+  {
+    "argv": [
+      "xcrun",
+      "swift",
+      "build",
+      "--package-path",
+      "/Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/outputs/SwiftJLI",
+      "--scratch-path",
+      "/Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/os27/candidate/SwiftJLI/build/release",
+      "--cache-path",
+      "/Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/os27/candidate/SwiftJLI/cache",
+      "--config-path",
+      "/Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/os27/candidate/SwiftJLI/config",
+      "--security-path",
+      "/Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/os27/candidate/SwiftJLI/security",
+      "--disable-sandbox",
+      "--build-system",
+      "swiftbuild",
+      "--jobs",
+      "2",
+      "-c",
+      "release",
+      "--product",
+      "swiftjli",
+      "--sbom-spec",
+      "spdx",
+      "--sbom-output-dir",
+      "/Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/os27/cli-sbom/SwiftJLI/spdx"
+    ],
+    "exit_code": 0,
+    "product": "swiftjli",
+    "files": {
+      "spdx/spdx3-3.0.1-swiftjli-3931d9df7c057e2fcc748fd4641f57159c271a0e-modified-all-2026-09-19T09_36_23Z.json": "ac3f57dd27750b4e1f4ca3df1c4d7d5045e95b3580ed154ac8984271d534dce2"
+    },
+    "conformance": "unqualified; installed schema bundle absent; see existing field-audit limitations"
+  },
+  {
+    "argv": [
+      "xcrun",
+      "swift",
+      "build",
+      "--package-path",
+      "/Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/outputs/SwiftJLI",
+      "--scratch-path",
+      "/Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/os27/candidate/SwiftJLI/build/release",
+      "--cache-path",
+      "/Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/os27/candidate/SwiftJLI/cache",
+      "--config-path",
+      "/Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/os27/candidate/SwiftJLI/config",
+      "--security-path",
+      "/Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/os27/candidate/SwiftJLI/security",
+      "--disable-sandbox",
+      "--build-system",
+      "swiftbuild",
+      "--jobs",
+      "2",
+      "-c",
+      "release",
+      "--product",
+      "swiftjli",
+      "--sbom-spec",
+      "cyclonedx",
+      "--sbom-output-dir",
+      "/Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/os27/cli-sbom/SwiftJLI/cyclonedx"
+    ],
+    "exit_code": 0,
+    "product": "swiftjli",
+    "files": {
+      "cyclonedx/cyclonedx1-1.7-swiftjli-3931d9df7c057e2fcc748fd4641f57159c271a0e-modified-all-2026-09-19T09_36_25Z.json": "c01f08851b83d4caedb9c22a9cff85053751defb736652bad05ec02d3abeba13"
+    },
+    "conformance": "unqualified; installed schema bundle absent; see existing field-audit limitations"
+  }
+]

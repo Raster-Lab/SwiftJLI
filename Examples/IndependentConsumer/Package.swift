@@ -1,10 +1,10 @@
-// swift-tools-version: 6.2
+// swift-tools-version: 6.4
 // SPDX-License-Identifier: MIT
 import PackageDescription
 
 let package = Package(
     name: "IndependentConsumer",
-    platforms: [.macOS("26.0")],
+    platforms: [.macOS("27.0")],
     dependencies: [.package(path: "../..")],
     targets: [
         .executableTarget(name: "IndependentConsumer", dependencies: [
