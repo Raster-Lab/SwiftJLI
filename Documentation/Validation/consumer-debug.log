@@ -1,0 +1,6 @@
+Building for debugging...
+[2 / 6] IndependentConsumer-product
+[5 / 8] IndependentConsumer-product
+[7 / 8] IndependentConsumer-product
+Build complete! (0.69 secs)
+Independent SwiftJLI consumer: synthetic storage and common API calls passed; no JPEG codec is implemented.

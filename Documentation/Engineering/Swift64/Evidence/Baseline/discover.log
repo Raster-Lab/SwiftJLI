@@ -1,0 +1,40 @@
+Building for debugging...
+[Planning deferred tasks]
+[15 / 26] SwiftJLITests-product
+[16 / 35]
+[20 / 35] SwiftJLITests-product
+[22 / 35] SwiftJLITests-product
+[28 / 35] SwiftJLITests-product
+[29 / 35] AllIncludingTests
+[29 / 35] SwiftJLITests-product
+[31 / 35] SwiftJLITests-product
+Build complete! (2.86 secs)
+SwiftJLITests.abandonedDestinationInvalidatesItsReservedOwner()
+SwiftJLITests.adaptersShareWriterAuthorityAndRejectForgedLease()
+SwiftJLITests.cancellationDuringSyntheticRowsInvalidatesDestination()
+SwiftJLITests.cancellationInProviderFinalisationPreventsPublication(_:)
+SwiftJLITests.cancellationIsCheckedBeforeAllocatingStorage()
+SwiftJLITests.concurrentAdaptersReserveExactlyOneWriter()
+SwiftJLITests.configurationsAndBackendRequestsRejectUnsupportedChoices()
+SwiftJLITests.decoderPreservesTaskCancellationError()
+SwiftJLITests.explicitLargerMetadataLimitIsHonoured()
+SwiftJLITests.extremeIntegerInputsThrowWithoutOverflowTraps()
+SwiftJLITests.failedFillInvalidatesDestination()
+SwiftJLITests.imageRetainsAdapterUntilLastImageReleaseExactlyOnce()
+SwiftJLITests.independentAllocationAndMemoryCeilingsAreEnforced()
+SwiftJLITests.invalidResourceProfilesAndProgressFailPredictably()
+SwiftJLITests.meaningfulPrecisionRejectsInvalidValues()
+SwiftJLITests.metadataAndDestinationLimitsUseCallerBudget()
+SwiftJLITests.nativeByteOrderIsResolvedAndColourMeaningValidated()
+SwiftJLITests.paddedOddSizedSamplesPreservePrecision(_:)
+SwiftJLITests.paddedStorageCountsTowardsDecodedLimit()
+SwiftJLITests.pixelAndDimensionLimitsRejectBeforeAllocation()
+SwiftJLITests.planarDescriptorsMapEveryComponentAndRejectOverlap()
+SwiftJLITests.publicOperationsRejectCodecWorkAndAdvertiseEmptyCapabilities()
+SwiftJLITests.reentrantLeaseOperationsRejectWithoutDeadlocking()
+SwiftJLITests.safeSampleAccessHonoursExplicitBigEndian()
+SwiftJLITests.safeSampleWriterRejectsOutOfRangeWithoutTruncating()
+SwiftJLITests.sameTokenCannotAuthoriseConcurrentOverlappingBorrows()
+SwiftJLITests.sealedOwnerSupportsConcurrentReadersAndNestedRead()
+SwiftJLITests.shortCapacityAndInvalidStrideAreRejected()
+SwiftJLITests.unknownMeasurementsStayUnknownAndMetadataIsBounded()

@@ -1,0 +1,129 @@
+{
+  "@context" : "https://spdx.org/rdf/3.0.1/spdx-context.jsonld",
+  "@graph" : [
+    {
+      "creationInfo" : "urn:uuid:b784ebf5-27bb-4056-b391-840207c49666:creationInfo",
+      "from" : "urn:uuid:b784ebf5-27bb-4056-b391-840207c49666",
+      "relationshipType" : "hasDeclaredLicense",
+      "spdxId" : "urn:uuid:b784ebf5-27bb-4056-b391-840207c49666-hasDeclaredLicense-urn:spdx:Apache-2.0",
+      "to" : [
+        "urn:spdx:Apache-2.0"
+      ],
+      "type" : "Relationship"
+    },
+    {
+      "creationInfo" : "urn:uuid:b784ebf5-27bb-4056-b391-840207c49666:creationInfo",
+      "simplelicensing_licenseExpression" : "Apache-2.0",
+      "spdxId" : "urn:spdx:Apache-2.0",
+      "type" : "simplelicensing_LicenseExpression"
+    },
+    {
+      "@id" : "urn:uuid:b784ebf5-27bb-4056-b391-840207c49666:creationInfo",
+      "created" : "2026-09-19T09:34:00Z",
+      "createdBy" : [
+        "urn:uuid:b784ebf5-27bb-4056-b391-840207c49666"
+      ],
+      "specVersion" : "6.4.0-dev",
+      "type" : "CreationInfo"
+    },
+    {
+      "creationInfo" : "urn:uuid:b784ebf5-27bb-4056-b391-840207c49666:creationInfo",
+      "name" : "swift-package-manager",
+      "spdxId" : "urn:uuid:b784ebf5-27bb-4056-b391-840207c49666",
+      "type" : "Agent"
+    },
+    {
+      "@id" : "_:creationInfo",
+      "created" : "2026-09-19T09:34:00Z",
+      "createdBy" : [
+        "urn:uuid:b784ebf5-27bb-4056-b391-840207c49666"
+      ],
+      "specVersion" : "3.0.1",
+      "type" : "CreationInfo"
+    },
+    {
+      "creationInfo" : "_:creationInfo",
+      "profileConformance" : [
+        "core",
+        "software"
+      ],
+      "rootElement" : [
+        "urn:spdx:swiftjli:SwiftJLI"
+      ],
+      "spdxId" : "urn:uuid:5480450d-6d5b-4731-a3de-684cc2344eb8",
+      "type" : "software_Sbom"
+    },
+    {
+      "creationInfo" : "_:creationInfo",
+      "from" : "urn:uuid:5480450d-6d5b-4731-a3de-684cc2344eb8",
+      "relationshipType" : "describes",
+      "spdxId" : "urn:uuid:5480450d-6d5b-4731-a3de-684cc2344eb8-describes-urn:spdx:swiftjli:SwiftJLI",
+      "to" : [
+        "urn:spdx:swiftjli:SwiftJLI"
+      ],
+      "type" : "Relationship"
+    },
+    {
+      "creationInfo" : "_:creationInfo",
+      "profileConformance" : [
+        "core",
+        "software"
+      ],
+      "rootElement" : [
+        "urn:uuid:5480450d-6d5b-4731-a3de-684cc2344eb8"
+      ],
+      "spdxId" : "urn:uuid:2900e3c2-23bf-43d0-a161-e27353e837c7",
+      "type" : "SpdxDocument"
+    },
+    {
+      "creationInfo" : "_:creationInfo",
+      "description" : "<ResolvedPackage: swiftjli>",
+      "externalUrl" : "pkg:swift/github.com/Raster-Lab/swiftjli@3931d9df7c057e2fcc748fd4641f57159c271a0e-modified",
+      "name" : "swiftjli",
+      "software_internalVersion" : "3931d9df7c057e2fcc748fd4641f57159c271a0e-modified",
+      "software_primaryPurpose" : "application",
+      "spdxId" : "urn:spdx:swiftjli",
+      "summary" : "swift-package",
+      "type" : "software_Package"
+    },
+    {
+      "creationInfo" : "_:creationInfo",
+      "externalUrl" : "pkg:swift/github.com/Raster-Lab/swiftjli:SwiftJLI@3931d9df7c057e2fcc748fd4641f57159c271a0e-modified",
+      "name" : "SwiftJLI",
+      "software_internalVersion" : "3931d9df7c057e2fcc748fd4641f57159c271a0e-modified",
+      "software_primaryPurpose" : "library",
+      "spdxId" : "urn:spdx:swiftjli:SwiftJLI",
+      "summary" : "swift-product",
+      "type" : "software_Package"
+    },
+    {
+      "creationInfo" : "_:creationInfo",
+      "from" : "urn:spdx:swiftjli",
+      "relationshipType" : "dependsOn",
+      "spdxId" : "urn:spdx:swiftjli-dependsOn",
+      "to" : [
+        "urn:spdx:swiftjli:SwiftJLI"
+      ],
+      "type" : "Relationship"
+    },
+    {
+      "externalIdentifierType" : "gitoid",
+      "identifier" : "urn:spdx:3931d9df7c057e2fcc748fd4641f57159c271a0e",
+      "identifierLocator" : [
+        "https://github.com/Raster-Lab/SwiftJLI.git"
+      ],
+      "type" : "ExternalIdentifier"
+    },
+    {
+      "creationInfo" : "_:creationInfo",
+      "from" : "urn:spdx:3931d9df7c057e2fcc748fd4641f57159c271a0e",
+      "relationshipType" : "generates",
+      "spdxId" : "urn:spdx:3931d9df7c057e2fcc748fd4641f57159c271a0e-generates",
+      "to" : [
+        "urn:spdx:swiftjli",
+        "urn:spdx:swiftjli:SwiftJLI"
+      ],
+      "type" : "Relationship"
+    }
+  ]
+}

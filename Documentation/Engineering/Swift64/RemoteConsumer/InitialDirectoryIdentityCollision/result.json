@@ -1,0 +1,27 @@
+{
+  "repository": "SwiftJLI",
+  "url": "https://github.com/Raster-Lab/SwiftJLI.git",
+  "revision": "574c16a2eb09d62bf1253076d81c10c40bb5d36e",
+  "argv": [
+    "xcrun",
+    "swift",
+    "run",
+    "--disable-sandbox",
+    "--build-system",
+    "swiftbuild",
+    "--jobs",
+    "2",
+    "--cache-path",
+    "/Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/swift64/url-consumers/SwiftJLI/cache",
+    "--config-path",
+    "/Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/swift64/url-consumers/SwiftJLI/config",
+    "--security-path",
+    "/Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/swift64/url-consumers/SwiftJLI/security",
+    "MigrationExample"
+  ],
+  "cwd": "/Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/swift64/url-consumers/SwiftJLI",
+  "developer_dir": "/Applications/Xcode.app/Contents/Developer",
+  "exit_code": 1,
+  "example_sha256": "1b68b480fb9503e04314b70252de2e2ca286c2075773f00b7f3faf8dab91a748",
+  "manifest_sha256": "8b6cb674e79ee9b9755cac8c886c7f67f3519685c49be5ea4f9705decca2ddd4"
+}

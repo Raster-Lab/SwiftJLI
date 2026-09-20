@@ -1,0 +1,22 @@
+Building for production...
+[Planning deferred tasks]
+[20 / 40] SwiftJLI
+[31 / 75]
+[36 / 75]
+[39 / 75]
+[40 / 75]
+[44 / 75]
+[47 / 75]
+[52 / 75]
+[54 / 75]
+[55 / 75]
+[56 / 75] SwiftJLI
+[66 / 76] SwiftJLITests-product
+[68 / 79]
+[70 / 79] SwiftJLITests-product
+[75 / 79] SwiftJLITests-product
+error: Operation not permitted
+error: GenerateDSYMFile /Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/outputs/SwiftJLI/.build/out/Products/Release/SwiftJLITests.xctest.dSYM /Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/outputs/SwiftJLI/.build/out/Products/Release/SwiftJLITests.xctest/Contents/MacOS/SwiftJLITests failed with a nonzero exit code. Command line:     cd /Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/outputs/SwiftJLI
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dsymutil /Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/outputs/SwiftJLI/.build/out/Products/Release/SwiftJLITests.xctest/Contents/MacOS/SwiftJLITests -o /Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/outputs/SwiftJLI/.build/out/Products/Release/SwiftJLITests.xctest.dSYM
+error: Build failed
+error: fatalError

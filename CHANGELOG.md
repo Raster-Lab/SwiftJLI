@@ -1,5 +1,26 @@
 # Change log
 
+## 1.1.0-dev.1 — Swift 6.4 upgrade, 2026-09-19 (unreleased)
+
+- Require Swift tools/compiler 6.4, retaining Swift 6 language mode and OS 26 deployment floors.
+- Advance the coordinated common contract to 0.3.0 and the earlier unreleased 1.0.0 version target to 1.1.0.
+- Adopt checked native-order span access for UInt16 samples with explicit endian conversion; preserve public API and owning-storage semantics.
+- Add the supplied upgrade references, F01–F13 feature register, headless Swift Build validation and exact evidence. No codec capability, stable release or tag is added.
+
+## Unreleased — application migration documentation, 2026-09-18
+
+- Added [MIGRATION.md](MIGRATION.md) for human and coding-agent upgrades from pinned JLISwift APIs, covering dependencies, API/storage changes, JPEG fidelity/precision, optional products, staged adoption and rollback.
+- Linked the guide from README, agent instructions, contributing guidance and the implementation plan. Codec implementation and capability status are unchanged.
+
+## Unreleased — Milestone 1 contract implementation, 2026-09-18
+
+- Final Milestone 1 review: prevent image publication when cancellation occurs inside provider sealing/validation; deterministic regressions and full checks pass.
+- Added an independent Swift 6.2-minimum package in Swift 6 language mode, checked sample/plane descriptors, resource profiles and explicit errors.
+- Implemented owning sample storage, opaque exclusive write leases, atomic seal/abort lifecycle, retained immutable images and checked unsigned 16-bit sample helpers.
+- Added common encoder/decoder API shapes with truthful empty capabilities and explicit unsupported-operation errors. No JPEG algorithm, real inspector, CLI or transcoder is implemented.
+- Added synthetic descriptor, lifetime, adapter, concurrent access, cancellation, resource and independent-consumer coverage. Exact executed commands and remaining gates are in `Documentation/MILESTONE1.md`.
+- Kept predecessor algorithms, `JLIDICOM`, `JLIBench` and their third-party fixture/oracle qualification deferred to the later migration milestones.
+
 ## Unreleased — documentation foundation, 2026-09-17
 
 - Defined the standalone SwiftJLI successor and intended first stable version 1.0.0.
@@ -22,3 +43,15 @@
 - Updated all seven shared documents and their SHA-256 manifest. This is documentation only; no source migration, codec execution or performance claim.
 
 The foundation document version is 0.2.0. It is separate from the intended library version.
+
+## OS 27 and CLI foundation — 19 September 2026
+
+Apple platform floors are 26.0; contract 0.5.0 reverses the 0.4.0 raise to 27.0, which no released SDK, toolchain or CI runner can currently validate. Development version 1.1.0-dev.2, common contract 0.5.0. The standalone `swiftjli` provides help/version/capabilities, five diagnostic levels and a matching section 1 manual installed/updated with the binary. Codec commands remain unavailable. Byte-order sample access uses explicit fixed-width integer conversion and does not raise the runtime floor. See [qualification and limitations](Documentation/Engineering/OS27CLI/README.md). Historical evidence and supplied documents remain unchanged.
+## Apple floor restored to 26.0 — contract 0.5.0, 20 September 2026
+
+- Revert the 0.4.0 Apple deployment raise: macOS, iOS/iPadOS, tvOS, visionOS and watchOS return to **26.0**. Xcode 27 is a public preview with a 27.2 beta, no generally available SDK or stable CI runner exists for OS 27, and Swift 6.4.0 rejects a 27.0 deployment target outright because its supported range ends at 26.5.x. The raise could not be validated on any supported configuration.
+- Return `swift-tools-version` to **6.2**, keeping Swift 6.4 as the qualified primary toolchain. A manifest floor constrains consumer resolution, and every current consumer resolves at 6.2.
+- Replace the OS-27-gated `RawSpan.load(fromByteOffset:as:_:)` and `OutputRawSpan.append(_:as:_:)` byte-order overloads with explicit fixed-width integer conversion. This restores the rule contract 0.3.0 already specified and was the sole reason the floor moved. Public API, ownership and fidelity semantics are unchanged.
+- Relax `Scripts/validate-swift64.py` from one pinned preview-Xcode build to accepting Swift 6.2 or 6.4, recording the exact toolchain as evidence rather than enforcing it as an admission gate.
+- Retain the OS 27 records under `Documentation/Engineering/OS27CLI` as superseded history for their platform claims; their CLI content remains current.
+- Verified on Swift 6.2.4 and Swift 6.4.0, debug and release. No codec capability, stable release or tag is added.

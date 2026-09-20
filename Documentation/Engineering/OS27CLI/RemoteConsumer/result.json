@@ -1,0 +1,67 @@
+{
+  "repository": "SwiftJLI",
+  "url": "https://github.com/Raster-Lab/SwiftJLI.git",
+  "revision": "82e5adbb9e778e3ef83cf7da743acf79e9196256",
+  "argv": [
+    "xcrun",
+    "swift",
+    "run",
+    "--disable-sandbox",
+    "--build-system",
+    "swiftbuild",
+    "--jobs",
+    "2",
+    "--cache-path",
+    "/Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/os27/url-consumers/RemoteConsumer-SwiftJLI/cache",
+    "--config-path",
+    "/Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/os27/url-consumers/RemoteConsumer-SwiftJLI/config",
+    "--security-path",
+    "/Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/os27/url-consumers/RemoteConsumer-SwiftJLI/security",
+    "MigrationExample"
+  ],
+  "cwd": "/Users/suresh/Documents/Codex/2026-09-18/create-coding-agents-to-start-work/work/os27/url-consumers/RemoteConsumer-SwiftJLI",
+  "developer_dir": "/Applications/Xcode.app/Contents/Developer",
+  "exit_code": 0,
+  "example_sha256": "1b68b480fb9503e04314b70252de2e2ca286c2075773f00b7f3faf8dab91a748",
+  "manifest_sha256": "8b2520587e887c6f1640cb54b015585379302b029344fd6bd978c06003e3186a",
+  "resolved": {
+    "originHash": "8b2520587e887c6f1640cb54b015585379302b029344fd6bd978c06003e3186a",
+    "pins": [
+      {
+        "identity": "swiftjli",
+        "kind": "remoteSourceControl",
+        "location": "https://github.com/Raster-Lab/SwiftJLI.git",
+        "state": {
+          "revision": "82e5adbb9e778e3ef83cf7da743acf79e9196256"
+        }
+      }
+    ],
+    "version": 3
+  },
+  "checkout_head": "82e5adbb9e778e3ef83cf7da743acf79e9196256",
+  "tested_input_hashes_match": true,
+  "source_files_sha256": {
+    "Package.swift": "9795e5f96aa8cd936bd2efa0f5fb672c7bd7fa4d7f71c0cc0820ce66d21954b7",
+    "VERSION": "913c1672433548005a2a6b9c862a939558b9f8ce8357ad85350bfc0d26c0e938",
+    "Sources/SwiftJLICLI/main.swift": "2d87d66b4854f0343b0134c8f640d8a29ce815db6fab5f9fa877e27bb23bd850",
+    "Sources/SwiftJLI/Options.swift": "082a589b2172282b6a66ea3bd6e72f6d865671a782cb1b3839549db3e575f622",
+    "Sources/SwiftJLI/ImageDescriptor.swift": "a6d91691d00c0bee8f19986f7bd95739589794898e3c163e80923885d21c5a96",
+    "Sources/SwiftJLI/ImageStorage.swift": "8bc26a7d1237260dbb607fe2612f55d05a9376365371573332190e78308095cd",
+    "Sources/SwiftJLI/CodecAPI.swift": "f2744a85794dc40f46e9062e01bed9484ea4eca14ae729bbe870e589839b0e91",
+    "Sources/SwiftJLI/Image.swift": "4dfb7a32d89f03a9679b1b5f9071af5a6176f335e96faf400fba2b7a0c9debf7",
+    "Sources/SwiftJLI/Errors.swift": "cfae3357b4aba0e62df1ed6096b8af951d39d0155184b8881c737d48ec936643",
+    "Tests/SwiftJLITests/CancellationPublicationTests.swift": "66345a3dc1755c6a3d80fde59dfe5a5a71e979a4025806ba023cffbcb3ae90d4",
+    "Tests/SwiftJLITests/Swift64SampleAccessTests.swift": "e58423ab50cb8cfc1290c3e28ed8bff253fc04fdea82f0849c36e1beec78aa8e",
+    "Tests/SwiftJLITests/APITests.swift": "7f75343749f220e968fdf027df31be92b98d77b51e445c6f5cc3e67445de62e1",
+    "Tests/SwiftJLITests/DescriptorTests.swift": "6a265618459137fe1fde71d4590b5b67add5a4d93d14f57a725ad7b0f72cc7f5",
+    "Tests/SwiftJLITests/LimitTests.swift": "9d70c337a0d929b567d92af8128254cbcb704cdf11d39f984be0481b0dd474a8",
+    "Tests/SwiftJLITests/OwnershipTests.swift": "d89e52cf3012f515a9285b8185388c5be051325d349649a109087387f01b0512",
+    "Scripts/validate.sh": "5fde61d2ab79718a455979ffd6909cdbc9592445c09a02f1fce45a7c316a0365",
+    "Scripts/validate-swift64.py": "cf9f9a0ef5f529206e37a99819d020014d2327aaa168d8a9e9f695099e087dbf",
+    "Scripts/test-cli.py": "1bd6ae8f0ef5b0464356ec83a9d68bc9ed8092659196ad2f5a3475bf4d8a0ff7",
+    "Scripts/README.md": "04241727241c5e39c460ba9ce92e6fc8cb8592cd53931aacd372ba6f7416fa1f",
+    "Scripts/install-cli.sh": "01e03b7f2d488b06291e051063d641ad6123a17432e1538f5f8985b2fab0672a",
+    "ManPages/swiftjli.1": "c7daf8a1e640d7041e4f2ac41c7cd7a8d5d0f807836e5ecf2ec0e68856c98c37"
+  },
+  "package_resolved_sha256": "5f8ec4d2858b4ffdd3972587b1d5081e7d6f3d3d7e1ed82e8784095c467e075f"
+}
