@@ -9,7 +9,7 @@ let package = Package(
         .watchOS("26.0"), .visionOS("26.0")
     ],
     products: [.library(name: "SwiftJLI", targets: ["SwiftJLI"]),
-               .executable(name: "swiftjli", targets: ["SwiftJLICLI"])],
+               .executable(name: "swiftjli-cli", targets: ["SwiftJLICLI"])],
     targets: [
         .target(name: "SwiftJLI"),
         .executableTarget(name: "SwiftJLICLI", dependencies: ["SwiftJLI"]),

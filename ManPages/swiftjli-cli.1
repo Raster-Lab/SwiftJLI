@@ -1,8 +1,8 @@
-.TH SWIFTJLI 1 "September 23, 2026" "1.1.0-dev.2" "Swift Image Compression Suite"
+.TH SWIFTJLI-CLI 1 "September 23, 2026" "1.1.0-dev.2" "Swift Image Compression Suite"
 .SH NAME
-swiftjli \- help, version and capability reporting for SwiftJLI
+swiftjli\-cli \- help, version and capability reporting for SwiftJLI
 .SH SYNOPSIS
-.B swiftjli
+.B swiftjli\-cli
 .RI [ options ] " command " [ options ]
 .SH DESCRIPTION
 This development tool provides help, version and truthful library capability
@@ -72,11 +72,11 @@ Future codec statuses reserve 3 malformed input, 5 resource/deadline,
 7 internal failure and 130 user cancellation.
 .SH EXAMPLES
 .nf
-swiftjli \-h
-swiftjli help capabilities
-swiftjli capabilities \-\-json \-vv
-swiftjli capabilities \-verbose: 3
-swiftjli capabilities \-\-verbose=+++++
+swiftjli\-cli \-h
+swiftjli\-cli help capabilities
+swiftjli\-cli capabilities \-\-json \-vv
+swiftjli\-cli capabilities \-verbose: 3
+swiftjli\-cli capabilities \-\-verbose=+++++
 .fi
 .SH INSTALLATION
 Scripts/install-cli.sh installs or updates the executable and this page
@@ -84,8 +84,8 @@ together.
 Use \-\-prefix for an absolute prefix (default /usr/local), \-\-destdir or
 DESTDIR
 for staging, and \-\-binary for a prebuilt binary matching VERSION.
-Files are PREFIX/bin/swiftjli and PREFIX/share/man/man1/swiftjli.1.
-For custom prefixes use man \-M PREFIX/share/man swiftjli, or configure
+Files are PREFIX/bin/swiftjli\-cli and PREFIX/share/man/man1/swiftjli\-cli.1.
+For custom prefixes use man \-M PREFIX/share/man swiftjli\-cli, or configure
 MANPATH.
 No index refresh is needed for direct lookup; no sudo runs automatically.
 .SH SEE ALSO
