@@ -46,6 +46,29 @@ The following codec work follows Milestone 1 contract feasibility. It is not par
 Build on the validated common surface to implement a native unsigned 16-bit lossless SOF3 shared-buffer path. Add the per-codec CLI and interop tests without assuming the predecessor benchmark executable is a general CLI. Join the suite transcode harness for lossless JPEG modes; retain lossy features as explicit options.
 
 
+## Product dispositions (POL-05)
+
+Decided 22 September 2026 under contract 0.8.0 §3, which requires this inventory before any subsystem is relocated. Measured at predecessor JLISwift `0a4ded0` with `swift package dump-package`. "Imports" counts files across DICOMKit, CompressionFamily, VoxeliaValidation, DICOMAdapter, RasterOneImage, OneImageViewer-iOS and telerad-dicom-viewer containing a top-level `import <module>`.
+
+POL-05 requires every product to be explicitly **retained** (migrates, stays a public product), **adapted** (migrates with a changed shape — folded into the principal module, renamed, or re-expressed through the common API) or **deferred** (does not migrate for the first stable; stays with the predecessor through the maintenance window). Deferred is not deleted.
+
+| Predecessor product | Files / lines | Imports | Disposition | Successor | Basis |
+| --- | --- | --- | --- | --- | --- |
+| `JLISwift` | 30 / 8,707 | 1 | Adapted — renamed | `SwiftJLI` | API-01 |
+| ↳ `Sources/JLISwift/Contract/` | — | — | Adapted — folded in | `SwiftJLI` | Contract 0.8.0 §5 |
+| `JLIDICOM` | 3 / 1,305 | 0 | Deferred — retired | none | POL-05 keeps DICOM parsing in consumers, and `DICOMWindowRenderer` is windowing, which the memory contract excludes from the codec outright: "No windowing, VOI LUT, modality rescale, colour display conversion or automatic normalisation occurs in this contract." DICOMKit declares this product as a dependency and never imports it. |
+| `JLIBench` (exec) | 10 / 2,616 | 0 | Deferred — dev tooling | none | TESTING keeps development-only tools outside the shipped dependency graph |
+
+**Product list after migration:** `SwiftJLI` (library) and `swiftjli` (executable).
+
+### Decisions recorded with these dispositions
+
+**I1 — DICOMKit's `JLIDICOM` dependency is dead and is dropped either way.** DICOMKit declares the product in its manifest and imports it in no source file, so it resolves and builds a product it never uses. Removing that declaration belongs in DICOMKit's separately assigned cutover task and does not depend on this migration.
+
+**I2 — deferring `JLIBench` does not defer its fixtures.** Its `Regression/` corpus and `IdentityHashes.swift` are exactly the pinned predecessor corpus and bug reproducers TEST-04 requires to be carried forward. The fixtures migrate with the codec and keep their provenance records; only the executable is deferred.
+
+**I3 — `swiftjli`'s payload verbs are new work, not a migration.** The predecessor ships no codec CLI, only the `JLIBench` benchmark executable, so CLI-01's required surface cannot be migrated from anywhere. The first stable 1.1.0 ships the diagnostic CLI already present — help, version and capabilities — and `encode`, `decode`, `inspect`, `validate` are budgeted as new implementation in the CLI milestone rather than treated as part of the codec move.
+
 ## Required handover
 
 Update CHANGELOG.md and migration provenance. Provide the exact commands, commits, fixture hashes and outcomes; report tests not run and why, unsupported cases, allocation/copy evidence and performance impact. Map each advertised feature to a test and capability entry. Keep DICOMKit/Voxelia source changes outside this repository task unless the owner separately assigns them.
