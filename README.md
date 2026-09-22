@@ -4,7 +4,7 @@ JPEG, including native lossless JPEG for the **Swift Image Compression Suite**.
 
 **Status: Milestone 1 API and owning-memory implementation.** A standalone Swift package now validates descriptors, retains sealed storage and enforces exclusive write leases. Synthetic storage and public call shapes are tested with the local Xcode toolchain. JPEG algorithms, real format inspection and codec CLI operations are deferred; encoding and decoding report `unsupportedFeature`, and codec capabilities are empty. The intended first stable library version is **1.1.0**; it is not a published release.
 
-SwiftJLI is the standalone successor to [JLISwift](https://github.com/Raster-Lab/JLISwift). The successor is intended to provide a harmonised API, explicit memory ownership, high-precision sample preservation and efficient shared-storage integration. It has no mandatory dependency on another suite library or CompressionFamily. MIT licensing applies to these documents and subsequent authorised in-house implementation; third-party material retains its own terms.
+SwiftJLI is the standalone successor to [JLISwift](https://github.com/Raster-Lab/JLISwift). The successor is intended to provide a harmonised API, explicit memory ownership, high-precision sample preservation and efficient shared-storage integration. It has no mandatory dependency on another suite library or CompressionFamily. Apache-2.0 licensing applies to these documents and subsequent authorised in-house implementation; third-party material retains its own terms.
 
 ## Swift 6.4 development candidate
 
@@ -24,7 +24,7 @@ The current implementation is **Milestone 1: API and memory-contract feasibility
 - [Memory ownership and no-copy hand-off](Documentation/MEMORY_CONTRACT.md).
 - [Unit, regression and security testing](Documentation/TESTING.md).
 - [Performance gates](Documentation/PERFORMANCE.md), [platforms](Documentation/PLATFORMS.md) and [CLI](Documentation/CLI_CONTRACT.md).
-- [History and source provenance](HISTORY.md), [change log](CHANGELOG.md), [security](SECURITY.md), [contributing](CONTRIBUTING.md) and [MIT licence](LICENSE).
+- [History and source provenance](HISTORY.md), [change log](CHANGELOG.md), [security](SECURITY.md), [contributing](CONTRIBUTING.md) and [Apache-2.0 licence](LICENSE).
 
 ## Relationship to the suite
 
