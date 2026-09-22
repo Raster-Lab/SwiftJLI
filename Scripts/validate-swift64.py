@@ -38,6 +38,8 @@ def main() -> int:
     parser.add_argument("--jobs", type=int, default=2, help="Build workers per command (1..32; default 2)")
     parser.add_argument("--repetitions", type=int, default=5, help="Fixed repetitions for selected lifetime/cancellation cases (2..50)")
     parser.add_argument("--disable-package-sandbox", action="store_true", help="Explicit nested SwiftPM sandbox workaround; does not change the host sandbox")
+    parser.add_argument("--build-engine", choices=("swiftbuild", "native"), default="swiftbuild",
+                        help="Build engine; swiftbuild falls back to native where it cannot run (recorded)")
     parser.add_argument("--timeout", type=int, default=600, help="Maximum seconds per command")
     args = parser.parse_args()
     selected = CHECKS.copy() if args.checks == "all" else set(args.checks.split(","))
@@ -61,7 +63,8 @@ def main() -> int:
     env["CLANG_MODULE_CACHE_PATH"] = str(output / "clang-cache")
     env["SWIFTPM_MODULECACHE_OVERRIDE"] = str(output / "swift-cache")
     report = {"package": name, "repository": str(repo), "started_utc": stamp,
-              "developer_dir": env["DEVELOPER_DIR"], "build_engine": "swiftbuild",
+              "developer_dir": env["DEVELOPER_DIR"], "build_engine": args.build_engine,
+              "requested_build_engine": args.build_engine,
               "accepted_swift": [pattern.pattern for pattern in ACCEPTED_SWIFT],
               "selected_checks": sorted(selected), "not_run_checks": sorted(CHECKS - selected),
               "package_sandbox_disabled": args.disable_package_sandbox, "build_jobs": args.jobs,
@@ -69,6 +72,30 @@ def main() -> int:
 
     def save() -> None:
         (output / "report.json").write_text(json.dumps(report, indent=2) + "\n")
+
+    # Swift Build names each target's intermediates directory after the target.
+    # This package's library module and its CLI product differ only in case
+    # (`SwiftJLI` and `swiftjli`), so on a case-insensitive filesystem — the
+    # macOS default — those are one directory: the two targets overwrite each
+    # other's dependency files and the compiler fails with "unable to open
+    # dependencies file". The library alone builds; any build including the
+    # executable does not. The native engine is unaffected. Renaming either the
+    # module or the executable is a contract decision (API-01, CLI-01), not this
+    # script's to make, so the engine is recorded rather than the name changed.
+    probe = output / "CaseProbe"
+    probe.mkdir()
+    case_insensitive = (output / "caseprobe").exists()
+    probe.rmdir()
+    report["filesystem_case_insensitive"] = case_insensitive
+    engine = args.build_engine
+    if engine == "swiftbuild" and case_insensitive:
+        engine = "native"
+        report["build_engine"] = engine
+        report["open_gates"].append(
+            "Swift Build engine unusable on a case-insensitive filesystem: the library module "
+            f"'{name}' and the CLI product '{name.lower()}' share an intermediates directory, so "
+            "targets overwrite each other's dependency files. Built with the native engine "
+            "instead; Swift Build coverage is unexecuted, not passed.")
 
     def run(label: str, argv: list[str], cwd: Path = repo) -> str:
         log = output / f"{label}.log"
@@ -98,7 +125,7 @@ def main() -> int:
         command = ["xcrun", "swift", verb, "--package-path", str(package),
                    "--scratch-path", str(output / "build" / scratch),
                    "--cache-path", str(output / "cache"), "--config-path", str(output / "config"),
-                   "--security-path", str(output / "security"), "--build-system", "swiftbuild", "--jobs", str(args.jobs)]
+                   "--security-path", str(output / "security"), "--build-system", engine, "--jobs", str(args.jobs)]
         if args.disable_package_sandbox:
             command.append("--disable-sandbox")
         return command
@@ -126,31 +153,44 @@ def main() -> int:
             names = [item for item in names if re.search(REPETITION_FILTER, item)]
             if not names:
                 raise RuntimeError("Repetition filter selected zero discovered tests")
-        xml = output / f"{label}-tests.xml"
-        argv = swift("test", label) + ["-c", config] + extra + frameworks + ["--skip-build", "--xunit-output", str(xml)]
         repetitions = args.repetitions if repeat else 1
-        if repeat:
-            argv += ["--filter", REPETITION_FILTER, "--maximum-repetitions", str(repetitions)]
-        # No repeat-until-pass option: every failure remains a failure.
-        try:
-            text = run(label + "-tests", argv)
-        finally:
-            if xml.exists():
-                document = ET.parse(xml)
-                cases = document.findall(".//testcase")
-                counts = {"executed_declarations": len(cases),
-                          "failed_declarations": sum(c.find("failure") is not None or c.find("error") is not None for c in cases),
-                          "skipped_declarations": sum(c.find("skipped") is not None for c in cases)}
-                counts["passed_declarations"] = counts["executed_declarations"] - counts["failed_declarations"] - counts["skipped_declarations"]
-                report["test_runs"].append({"label": label, "discovered_declarations": len(names),
-                    "repetitions": repetitions, "xml": xml.name, **counts})
-                save()
-        if not xml.exists() or counts["executed_declarations"] == 0:
-            raise RuntimeError(f"{label}: no executed tests in xUnit evidence")
-        if counts["executed_declarations"] != len(names):
-            raise RuntimeError(f"{label}: discovered/executed declaration counts differ")
-        if counts["failed_declarations"] or counts["skipped_declarations"]:
-            raise RuntimeError(f"{label}: failed or skipped cases require disposition")
+        # `--maximum-repetitions` arrived after Swift 6.2, which contract 0.5.0 keeps
+        # as an accepted toolchain. Where the option is absent, repeat the run itself
+        # instead of skipping the check: its purpose is to show that the lifetime and
+        # cancellation cases survive repeated execution, and separate executions
+        # demonstrate that. Every iteration is validated and recorded individually.
+        in_process = repeat and supports_repetitions
+        iterations = 1 if (in_process or not repeat) else repetitions
+        for iteration in range(1, iterations + 1):
+            suffix = "" if iterations == 1 else f"-{iteration}"
+            xml = output / f"{label}-tests{suffix}.xml"
+            argv = swift("test", label) + ["-c", config] + extra + frameworks + ["--skip-build", "--xunit-output", str(xml)]
+            if repeat:
+                argv += ["--filter", REPETITION_FILTER]
+            if in_process:
+                argv += ["--maximum-repetitions", str(repetitions)]
+            # No repeat-until-pass option: every failure remains a failure.
+            counts = None
+            try:
+                text = run(label + "-tests" + suffix, argv)
+            finally:
+                if xml.exists():
+                    document = ET.parse(xml)
+                    cases = document.findall(".//testcase")
+                    counts = {"executed_declarations": len(cases),
+                              "failed_declarations": sum(c.find("failure") is not None or c.find("error") is not None for c in cases),
+                              "skipped_declarations": sum(c.find("skipped") is not None for c in cases)}
+                    counts["passed_declarations"] = counts["executed_declarations"] - counts["failed_declarations"] - counts["skipped_declarations"]
+                    report["test_runs"].append({"label": label + suffix, "discovered_declarations": len(names),
+                        "repetitions": repetitions if in_process else 1,
+                        "iteration": iteration, "iterations": iterations, "xml": xml.name, **counts})
+                    save()
+            if counts is None or counts["executed_declarations"] == 0:
+                raise RuntimeError(f"{label}: no executed tests in xUnit evidence")
+            if counts["executed_declarations"] != len(names):
+                raise RuntimeError(f"{label}: discovered/executed declaration counts differ")
+            if counts["failed_declarations"] or counts["skipped_declarations"]:
+                raise RuntimeError(f"{label}: failed or skipped cases require disposition")
         # xUnit collapses parameterised cases/repetitions. Logs retain actual case starts.
         passed_cases = 0
         for line in text.splitlines():
@@ -158,10 +198,14 @@ def main() -> int:
                 parameterised = re.search(r"with (\d+) test cases passed", line)
                 passed_cases += int(parameterised.group(1)) if parameterised else 1
         record = report["test_runs"][-1]
-        record["swift_testing_passed_case_executions"] = passed_cases * repetitions
+        record["swift_testing_passed_case_executions"] = passed_cases * (repetitions if in_process else 1)
         record["parameterised_case_start_events"] = len(re.findall(r"\bTest case passing .* started", text))
         record["repetition_start_events"] = len(re.findall(r"started \(repetition \d+\)", text))
         record["count_note"] = "xUnit counts declarations; passing Swift Testing case executions include argument cases and fixed repetitions. Raw logs retain every event. XCTest counts remain separate."
+        if iterations > 1:
+            record["iteration_note"] = (f"Repetitions ran as {iterations} separate executions because this toolchain "
+                                        "has no --maximum-repetitions; the fields above describe the last of them, "
+                                        "and each iteration has its own entry and log.")
         save()
 
     try:
@@ -189,9 +233,28 @@ def main() -> int:
         report["source_files_sha256"] = {str(p.relative_to(repo)): hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(source_files)}
         resolved = repo / "Package.resolved"
         report["package_resolved_sha256"] = hashlib.sha256(resolved.read_bytes()).hexdigest() if resolved.exists() else None
-        for verb in ("build", "test", "package"):
-            run(f"swift-{verb}-help", swift(verb, "help") + ["--help"])
-        run("swift-sbom-help", swift("package", "help") + ["generate-sbom", "--help"])
+        help_texts = {}
+        for verb in ("build", "test"):
+            help_texts[verb] = run(f"swift-{verb}-help", swift(verb, "help") + ["--help"])
+        # `swift package` is a container command, not a leaf one. Swift Argument
+        # Parser accepts `--help` on it only when nothing precedes it: once any
+        # option is given it is looking for a subcommand and rejects the flag
+        # with "Unknown option '--help'". The `help` subcommand takes the same
+        # options, works in every form and prints identical text.
+        help_texts["package"] = run("swift-package-help", swift("package", "help") + ["help"])
+        # SBOM support arrived after Swift 6.2, which contract 0.5.0 keeps as an
+        # accepted toolchain: on 6.2 neither `swift build --sbom-spec` nor the
+        # `generate-sbom` subcommand exists. Probe for the option this script
+        # actually uses rather than assuming. Failing hard here would make the
+        # script unrunnable on an accepted toolchain, which is the exact fault
+        # the 0.5.0 relaxation recorded at the top of this file removed, and
+        # POL-08 makes a missing environment an unexecuted gate, not a pass.
+        sbom_supported = "--sbom-spec" in help_texts["build"]
+        report["sbom_supported"] = sbom_supported
+        supports_repetitions = "--maximum-repetitions" in help_texts["test"]
+        report["repetitions_in_process"] = supports_repetitions
+        if sbom_supported:
+            run("swift-sbom-help", swift("package", "help") + ["generate-sbom", "--help"])
         run("target-info", ["xcrun", "swiftc", "-print-target-info"])
         for config in ("debug", "release"):
             if config in selected:
@@ -206,8 +269,13 @@ def main() -> int:
             (consumer / "Sources/Consumer").mkdir(parents=True)
             package_path = json.dumps(str(repo))
             (consumer / "Package.swift").write_text(
-                '// swift-tools-version: 6.4\nimport PackageDescription\n'
-                'let package = Package(name: "FreshConsumer", platforms: [.macOS(.v27)],\n'
+                # Contract 0.5.0 returned the manifest minimum to 6.2 and the Apple
+                # floor to 26.0, and 0.9.0 (D3) confirmed 26.0. A generated consumer
+                # pinned above the package it consumes cannot resolve on the
+                # toolchain this script accepts, which is the whole point of the
+                # check: it must mirror the real floor, not a reversed one.
+                '// swift-tools-version: 6.2\nimport PackageDescription\n'
+                'let package = Package(name: "FreshConsumer", platforms: [.macOS("26.0")],\n'
                 f' dependencies: [.package(path: {package_path})],\n'
                 f' targets: [.executableTarget(name: "Consumer", dependencies: [.product(name: "{name}", package: "{name}")])],\n'
                 ' swiftLanguageModes: [.v6])\n')
@@ -231,7 +299,13 @@ def main() -> int:
                 extra = ["--sanitize", sanitizer]
                 discover(label, "debug", extra)
                 test(label, "debug", extra)
-        if "sbom" in selected:
+        if "sbom" in selected and not sbom_supported:
+            report["open_gates"].append(
+                "SBOM generation is unavailable on this toolchain: `swift build` has no "
+                "--sbom-spec option before Swift 6.4. No spdx or cyclonedx SBOM was produced, "
+                "and the sbom check is unexecuted rather than passed.")
+            save()
+        if "sbom" in selected and sbom_supported:
             for spec in ("spdx", "cyclonedx"):
                 destination = output / "sboms" / spec
                 text = run("sbom-" + spec, swift("build", "sbom") + ["-c", "release", "--product", name,
@@ -247,6 +321,10 @@ def main() -> int:
                     report["open_gates"].append(f"{spec}: installed SwiftPM schema bundle unavailable; SBOM emitted but schema validation skipped")
                 save()
         report["status"] = "passed_requested_checks"
+        # Print them: an open gate that only ever reaches report.json is easy to
+        # read as a pass, and POL-08 turns on the difference.
+        for gate in report["open_gates"]:
+            print(f"{name}: unexecuted gate: {gate}", flush=True)
         print(f"Evidence: {output / 'report.json'}", flush=True)
         return 0
     except (RuntimeError, OSError, ValueError, ET.ParseError) as error:
