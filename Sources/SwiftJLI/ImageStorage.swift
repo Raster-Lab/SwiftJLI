@@ -49,6 +49,15 @@ public final class OwnedImageStorage: WritableImageStorage, Sendable {
         var lease: StorageWriteLease?
     }
     private let state: Mutex<State>
+    /// Set while any lifecycle operation or borrow holds `state`, and checked
+    /// before the mutex so that a reentrant call from the borrowing thread is
+    /// refused with an error rather than reaching the lock at all. Swift's Linux
+    /// `Mutex.withLockIfAvailable` traps on same-thread reacquisition instead of
+    /// returning `nil`, so the `nil` branch below cannot carry that case on Linux.
+    /// Found by SwiftJ2K's Milestone 4 Linux run and recorded in its MILESTONE4
+    /// evidence; this repository's Linux jobs have never executed under the
+    /// Actions billing lock, so nothing here had caught it.
+    private let engaged = Atomic<Bool>(false)
 
     public init(byteCount: Int, limits: ResourceLimits = .default) throws {
         try Task.checkCancellation()
@@ -104,7 +113,14 @@ public final class OwnedImageStorage: WritableImageStorage, Sendable {
     }
 
     private func locked<R>(_ body: (inout State) throws -> R) throws -> R {
-        guard let result = try state.withLockIfAvailable({ state in try body(&state) }) else {
+        guard !engaged.load(ordering: .acquiring) else {
+            throw CodecError(.storageUnavailable, "A storage borrow is already active.")
+        }
+        guard let result = try state.withLockIfAvailable({ state -> R in
+            engaged.store(true, ordering: .releasing)
+            defer { engaged.store(false, ordering: .releasing) }
+            return try body(&state)
+        }) else {
             throw CodecError(.storageUnavailable, "A storage borrow is already active.")
         }
         return result
