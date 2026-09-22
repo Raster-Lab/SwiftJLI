@@ -85,3 +85,10 @@ Apple platform floors are 26.0; contract 0.5.0 reverses the 0.4.0 raise to 27.0,
 - Licence changed from MIT to **Apache-2.0** for this repository, its in-house source and its documentation, amending POL-07 and settling the split that 0.7.0 referred to the owner. LICENSE replaced, NOTICE added, SPDX identifiers updated (27 files).
 - Recorded as preconditions rather than resolved: continuous integration must execute before any source moves (Actions billing is still locked, verified 22 September 2026), the POL-05 product inventory must be signed off, and the Apple 26.0 deployment floor against current consumer floors is referred to the owner.
 - All seven shared documents stay byte-identical; `SUITE_POLICY.md` and the SHA-256 manifest advance together. No platform, precision, ownership, fidelity or testing rule changes. This revision authorises no codec milestone and no release.
+
+## Product dispositions under POL-05 — 22 September 2026
+
+- Inventoried every JLISwift product and recorded it as retained, adapted or deferred in [IMPLEMENTATION.md](IMPLEMENTATION.md), as contract 0.8.0 §3 requires before any subsystem is relocated. Three products become two: `SwiftJLI` and `swiftjli`. `JLIDICOM` is deferred and retired — it contains windowing, which the memory contract excludes from the codec, and DICOMKit declares it without importing it. `JLIBench` is deferred as development tooling, but its regression corpus and identity hashes migrate under TEST-04.
+- Measured at predecessor `0a4ded0` with `swift package dump-package`, with an import census across DICOMKit, CompressionFamily, VoxeliaValidation, DICOMAdapter, RasterOneImage, OneImageViewer-iOS and telerad-dicom-viewer. Every deferred product has zero in-house importers.
+- Deferred is not deleted: a deferred product stays with the predecessor through its maintenance window. No shared contract document changes, no source moves, and no release or milestone is authorised by this record.
+
