@@ -4,9 +4,9 @@ Applies to Claude, Codex and other coding agents working in this repository.
 
 ## Start here
 
-Current owner-approved baseline: Apple OS 26.0 and the CLI foundation. Contract 0.5.0 reversed the 0.4.0 raise to OS 27; the OS 27 records under Documentation/Engineering/OS27CLI are superseded history, not the current baseline.
+Current owner-approved baseline: Apple OS 26.0, a Swift 6.2 manifest minimum with Swift 6.4 as the qualified primary toolchain, and the CLI foundation. The current contract revision is **0.9.0**. Contract 0.5.0 reversed the 0.4.0 raise to OS 27, and contract 0.9.0 (Decision D3) kept the floor at 26.0, placing the cost of adoption on each consumer at its own cutover. The OS 27 records under Documentation/Engineering/OS27CLI are superseded history for their platform claims, not the current baseline; their CLI content remains current.
 
-For the compiler upgrade, read the [Swift 6.4 manifesto](Documentation/Engineering/Swift64/Swift_6.4_Upgrade_Manifesto_v1.0.0.md), [suite supplement](Documentation/Engineering/Swift64/Swift_Image_Compression_Suite_Swift_6.4_Supplement_v1.0.0.md), then the [historical upgrade record and feature register](Documentation/Engineering/Swift64/README.md). Preserve the supplied files byte-for-byte. Current contract 0.5.0 supersedes their older inspected contract snapshot; historical evidence is not rewritten.
+For the compiler upgrade, read the [Swift 6.4 manifesto](Documentation/Engineering/Swift64/Swift_6.4_Upgrade_Manifesto_v1.0.0.md), [suite supplement](Documentation/Engineering/Swift64/Swift_Image_Compression_Suite_Swift_6.4_Supplement_v1.0.0.md), then the [historical upgrade record and feature register](Documentation/Engineering/Swift64/README.md). Preserve the supplied files byte-for-byte. Current contract 0.9.0 supersedes their older inspected contract snapshot; historical evidence is not rewritten.
 
 Read `README.md`, `HISTORY.md`, this file and `IMPLEMENTATION.md`, then all seven common contract documents in `Documentation/`. Read the repository-specific `TRANSCODING.md` when present before work affecting transcoding. `CLAUDE.md` points here and is not a separate policy. Follow the precedence in `Documentation/SUITE_POLICY.md`.
 
@@ -25,7 +25,7 @@ This repository began with documentation only. Reading its instructions does not
 
 ## Non-negotiable engineering rules
 
-- Swift 6.4 minimum, Swift 6 language mode and complete concurrency checking. Expensive codec work must have a defined executor policy and bounded cancellation points.
+- Swift 6.2 manifest minimum with Swift 6.4 as the qualified primary toolchain, Swift 6 language mode and complete concurrency checking. Both toolchains are supported; a manifest floor is a resolution constraint on consumers. Expensive codec work must have a defined executor policy and bounded cancellation points.
 - Validate untrusted sizes, offsets, strides, entropy counts and lengths with checked arithmetic. Throw defined errors. No input-dependent force unwrap/cast, assertion trap, uncontrolled allocation or process exit.
 - No raw pointer may outlive its scoped borrow; no array/Data buffer pointer becomes an async storage owner. Retain owners and join CPU/GPU work before release. Raw unsafe borrow APIs document caller obligations; closure syntax alone does not prove pointer non-escape.
 - An unchecked concurrency annotation needs a local written proof and relevant lifetime/race tests. Do not weaken language mode or globally suppress diagnostics to pass CI.
@@ -46,4 +46,6 @@ Later task prompts must name the next milestone explicitly. Repository creation 
 
 ## Current platform and CLI direction
 
-The owner approved Apple OS 27.0 minima and the CLI foundation in contract 0.5.0. Read [OS 27/CLI qualification](Documentation/Engineering/OS27CLI/README.md) and [CLI.md](CLI.md); these supersede OS 26 constraints and feature deferrals based only on that older floor. Preserve archived inputs and records. Keep help, verbosity, VERSION, man pages and installer behaviour aligned. Library code must not terminate a process; the executable alone maps documented CLI exit statuses. Codec implementations still require their assigned milestone.
+Apple deployment minima are **26.0**. Contract 0.4.0 raised them to 27.0; contract 0.5.0 reversed that raise, because no generally available Xcode ships OS 27 SDKs, no stable `macos-27` runner exists and Swift 6.4.0 rejects a 27.0 deployment target outright. Contract 0.9.0 (Decision D3) confirmed 26.0 and settled the consumer question: a consumer raises its own floor to 26.0 in the same change that re-points it from JLISwift to this repository, and until then JLISwift remains its supported route under API-01. PLAT-02 states the general principle — an API gated above the floor is a reason to choose a different API, not a reason to raise the floor.
+
+The CLI foundation the owner authorised in contract 0.4.0 stands unchanged; only the platform floor and the compiler minimum were revised. Read [CLI.md](CLI.md) for current usage and installation. The [OS 27/CLI record](Documentation/Engineering/OS27CLI/README.md) is superseded history for its platform claims and current for its CLI content; read it with that distinction. Preserve archived inputs and records. Keep help, verbosity, VERSION, man pages and installer behaviour aligned with the 26.0 floor and the Swift 6.2 manifest minimum. Library code must not terminate a process; the executable alone maps documented CLI exit statuses. Codec implementations still require their assigned milestone.

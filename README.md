@@ -8,7 +8,7 @@ SwiftJLI is the standalone successor to [JLISwift](https://github.com/Raster-Lab
 
 ## Swift 6.4 development candidate
 
-Current development version: **1.1.0-dev.2** ([VERSION](VERSION)); shared contract **0.9.0**. This increments the earlier unreleased 1.0.0 target and creates no release/tag. See the [current qualification record](Documentation/Engineering/OS27CLI/README.md) for adopted features, exact Xcode/Swift Build evidence and open platform gates. The historical [Milestone 1 evidence](Documentation/MILESTONE1.md) remains unchanged.
+Current development version: **1.1.0-dev.2** ([VERSION](VERSION)); shared contract **0.9.0**. This increments the earlier unreleased 1.0.0 target and creates no release/tag. See the [OS 27/CLI record](Documentation/Engineering/OS27CLI/README.md) for adopted features, exact Xcode/Swift Build evidence and open platform gates; its platform claims are superseded history, since contract 0.5.0 returned the Apple floor to 26.0 and the compiler minimum to 6.2, while its CLI content remains current. The historical [Milestone 1 evidence](Documentation/MILESTONE1.md) remains unchanged.
 
 ## Intended platform baseline
 
@@ -60,4 +60,4 @@ See the evidence for sandbox-compatible commands, sanitizer results and unexecut
 
 ## Command-line help and manual
 
-The diagnostic CLI now provides `-h` / `--help`, `help <command>`, version and truthful capability reporting. Codec commands remain unavailable. Verbosity has five levels: `-v`, `-vv`, `--verbose 1..5`, `--verbose=+++` and `-verbose: 3`; diagnostics use stderr and `--quiet` suppresses optional messages. See [CLI usage and installation](CLI.md). The installer updates both the executable and its UNIX man page together. [OS 27/CLI qualification](Documentation/Engineering/OS27CLI/README.md) supersedes the earlier OS 26 upgrade decision; earlier evidence remains historical.
+The diagnostic CLI now provides `-h` / `--help`, `help <command>`, version and truthful capability reporting. Codec commands remain unavailable. Verbosity has five levels: `-v`, `-vv`, `--verbose 1..5`, `--verbose=+++` and `-verbose: 3`; diagnostics use stderr and `--quiet` suppresses optional messages. See [CLI usage and installation](CLI.md). The installer updates both the executable and its UNIX man page together. The CLI authorisation recorded in the [OS 27/CLI record](Documentation/Engineering/OS27CLI/README.md) stands; the OS 27 platform floor it was written against does not, having been reversed by contract 0.5.0 and confirmed at 26.0 by contract 0.9.0.

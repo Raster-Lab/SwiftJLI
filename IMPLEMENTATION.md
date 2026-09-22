@@ -73,6 +73,6 @@ POL-05 requires every product to be explicitly **retained** (migrates, stays a p
 
 Update CHANGELOG.md and migration provenance. Provide the exact commands, commits, fixture hashes and outcomes; report tests not run and why, unsupported cases, allocation/copy evidence and performance impact. Map each advertised feature to a test and capability entry. Keep DICOMKit/Voxelia source changes outside this repository task unless the owner separately assigns them.
 
-## Owner-authorised OS 27 and CLI foundation
+## Owner-authorised CLI foundation
 
-Before codec migration, the owner raised Apple floors to 27.0 and requested executable help, verbosity and UNIX manuals. This bounded CLI foundation implements help/version/capabilities only; codec commands remain explicitly unavailable. See [CLI.md](CLI.md) and [new evidence](Documentation/Engineering/OS27CLI/README.md). The later codec/CLI milestones still govern real payload operations.
+Before codec migration, the owner requested executable help, verbosity and UNIX manuals, and in the same contract revision (0.4.0) raised Apple floors to 27.0. The CLI authorisation stands; the floor raise does not. Contract 0.5.0 returned the Apple minima to 26.0 and the manifest minimum to Swift 6.2, and contract 0.9.0 confirmed 26.0. This bounded CLI foundation implements help/version/capabilities only; codec commands remain explicitly unavailable. See [CLI.md](CLI.md) and the [OS 27/CLI record](Documentation/Engineering/OS27CLI/README.md), whose platform claims are superseded history and whose CLI content is current. The later codec/CLI milestones still govern real payload operations.

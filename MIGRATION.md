@@ -1,8 +1,10 @@
 # Migrating applications from JLISwift to SwiftJLI
 
-The successor now requires Swift 6.4 and retains its OS 27 deployment floors. See the [Swift 6.4 upgrade record](Documentation/Engineering/Swift64/README.md) for development versioning and validation; current codec availability is unchanged.
+The successor declares a **Swift 6.2 manifest minimum**, with Swift 6.4 as the qualified primary toolchain, and **Apple deployment floors of 26.0**. Contract 0.4.0 briefly raised those floors to 27.0; contract 0.5.0 reversed the raise and contract 0.9.0 confirmed 26.0, so an earlier reading of this guide that told you to prepare for OS 27 was wrong and is corrected here. See the [Swift 6.4 upgrade record](Documentation/Engineering/Swift64/README.md) for development versioning and validation; current codec availability is unchanged.
 
-This guide is for application maintainers and coding agents. It describes **Milestone 1, contract 0.4.0**: SwiftJLI provides public API shapes and owning sample storage, but **does not yet inspect, encode or decode JPEG**. Keep JLISwift serving real codec operations until the particular successor modes your application needs are implemented and qualified. Renaming the dependency and imports alone is insufficient.
+Under contract 0.9.0 (Decision D3) the floor is deliberate and is not lowered to meet a consumer: you raise your application's Apple deployment target to 26.0 in the same change that re-points it from JLISwift to SwiftJLI. Until you make that change, JLISwift remains your supported route.
+
+This guide is for application maintainers and coding agents. It describes **Milestone 1, contract 0.9.0**: SwiftJLI provides public API shapes and owning sample storage, but **does not yet inspect, encode or decode JPEG**. Keep JLISwift serving real codec operations until the particular successor modes your application needs are implemented and qualified. Renaming the dependency and imports alone is insufficient.
 
 The predecessor API was inspected at [JLISwift `9f1c6eb609fe6f26498db82b13df6b305630a374`](https://github.com/Raster-Lab/JLISwift/tree/9f1c6eb609fe6f26498db82b13df6b305630a374), not an assumed version range. Its historical `v0.5.0` tag is a separate reference. See [provenance](HISTORY.md), [current implementation evidence](Documentation/MILESTONE1.md) and the [remaining milestones](IMPLEMENTATION.md). Source inspection does not establish that predecessor codec tests passed.
 
@@ -14,13 +16,13 @@ Record the application's resolved JLISwift commit, tools/SDK versions, deploymen
 | --- | --- | --- |
 | Repository | `https://github.com/Raster-Lab/JLISwift.git` | `https://github.com/Raster-Lab/SwiftJLI.git` |
 | Package / core product / import | `JLISwift` | `SwiftJLI` |
-| Optional products | `JLIDICOM`, executable `JLIBench` | No equivalents currently shipped; retain or explicitly defer |
-| Swift toolchain | Pinned manifest requires 6.2 | 6.4 minimum; Swift 6 language mode |
-| Apple deployment floors | macOS 14, iOS/tvOS 17, watchOS 10, visionOS 1 | All 27.0 |
+| Optional products | `JLIDICOM`, executable `JLIBench` | Both **deferred** under POL-05, recorded in [IMPLEMENTATION.md](IMPLEMENTATION.md). No successor equivalent ships; deferred is not deleted, so each stays with JLISwift through its maintenance window. Keep any DICOM parsing and windowing in your own application. |
+| Swift toolchain | Pinned manifest requires 6.2 | 6.2 manifest minimum; Swift 6.4 qualified primary toolchain; Swift 6 language mode |
+| Apple deployment floors | macOS 14, iOS/tvOS 17, watchOS 10, visionOS 1 | All 26.0 |
 
 The intended SwiftJLI `1.1.0` is **not a published release requirement**. For a migration trial, use a reviewed checkout with `.package(path: "../SwiftJLI")`; add `.product(name: "SwiftJLI", package: "SwiftJLI")` to the consumer target's dependencies. Alternatively select an actually available, reviewed revision of the new repository and record its full SHA in the package requirement. Do not invent a `from: "1.1.0"` requirement or rely on moving `main`. Preserve `Package.resolved` in the application where applicable.
 
-In Xcode, add the successor package/product to an experimental target and use `import SwiftJLI`. Keep older deployment targets on their existing dependency while evaluating the OS 27 requirement. Linux and other platform qualification must be checked against [recorded evidence](Documentation/MILESTONE1.md), rather than inferred from the [intended platform matrix](Documentation/PLATFORMS.md).
+In Xcode, add the successor package/product to an experimental target and use `import SwiftJLI`. Keep older deployment targets on their existing dependency while evaluating the 26.0 requirement. Linux and other platform qualification must be checked against [recorded evidence](Documentation/MILESTONE1.md), rather than inferred from the [intended platform matrix](Documentation/PLATFORMS.md).
 
 ## 2. Map operations explicitly
 

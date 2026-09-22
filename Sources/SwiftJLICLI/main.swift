@@ -9,6 +9,10 @@ import Glibc
 
 private let tool = "swiftjli"
 private let version = "1.1.0-dev.2"
+// PLAT-01/02 fix the Apple deployment minimum at 26.0; contract 0.5.0 reversed the
+// 0.4.0 raise to 27.0 and contract 0.9.0 confirmed 26.0. Reported in one place so the
+// help text and the JSON payload cannot drift apart from each other again.
+private let minimumAppleOS = "26.0"
 private let reserved = ["encode", "decode", "inspect", "validate"]
 private let valueOptions: Set<String> = ["--input", "-i", "--output", "-o", "--input-format", "--output-format",
     "--mode", "--max-error", "--backend", "--copy-policy", "--threads", "--max-memory", "--timeout"]
@@ -166,7 +170,7 @@ private func help(_ command: String?) -> String {
       \(reserved.joined(separator: ", "))
                                 Reserved; codec algorithms are unavailable (exit 4).
 
-    Requires Swift 6.4 to build; Apple OS baseline 27.0. CLI hosts: macOS/Linux.
+    Builds with Swift 6.2 or later; Apple OS baseline \(minimumAppleOS). CLI hosts: macOS/Linux.
     This development tool provides help/version/capabilities, not compression yet.
 
     \(common)
@@ -210,7 +214,7 @@ private func run() throws -> Int32 {
     let decoder = Decoder.capabilities
     let formats = Array(Set(encoder.formats + decoder.formats)).sorted()
     if options.json {
-        let payload: [String: Any] = ["tool": tool, "version": version, "minimumAppleOS": "27.0",
+        let payload: [String: Any] = ["tool": tool, "version": version, "minimumAppleOS": minimumAppleOS,
             "canEncode": encoder.canEncode, "canDecode": decoder.canDecode,
             "canInspect": decoder.canInspect, "formats": formats]
         let data = try JSONSerialization.data(withJSONObject: payload, options: [.sortedKeys])
