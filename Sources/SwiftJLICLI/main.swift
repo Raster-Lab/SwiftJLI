@@ -210,8 +210,14 @@ private func run() throws -> Int32 {
         try write("\(tool): unsupported feature: codec algorithms are not implemented; no input/output opened.\n", to: .standardError)
         return 4
     }
-    let encoder = Encoder.capabilities
-    let decoder = Decoder.capabilities
+    // Qualified deliberately. `Encoder` and `Decoder` are also the names of the
+    // standard library's Codable protocols, so an unqualified reference compiles
+    // against those instead the moment this file's `import SwiftJLI` is not in
+    // effect — which is what the Swift Build engine does, compiling main.swift as
+    // part of module SwiftJLI and reporting "type 'any Encoder' has no member
+    // 'capabilities'". MIGRATION.md already asks consumers to qualify these names.
+    let encoder = SwiftJLI.Encoder.capabilities
+    let decoder = SwiftJLI.Decoder.capabilities
     let formats = Array(Set(encoder.formats + decoder.formats)).sorted()
     if options.json {
         let payload: [String: Any] = ["tool": tool, "version": version, "minimumAppleOS": minimumAppleOS,
