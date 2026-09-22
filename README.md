@@ -30,7 +30,7 @@ The current implementation is **Milestone 1: API and memory-contract feasibility
 
 The four independent libraries are SwiftJ2K, SwiftJLS, SwiftJXL and SwiftJLI, all intended to live under Raster-Lab. A future optional umbrella adapts them for codec selection and in-process transcoding. The codecs do not depend on that umbrella. SwiftCompressionFamily is not part of this successor plan. The common contract is mirrored documentation plus behavioural tests, not a shared runtime package.
 
-The main module is `SwiftJLI`; the diagnostic CLI is `swiftjli`. Features from the predecessor remain migration candidates whose exact coverage must be verified; see IMPLEMENTATION.md. Nothing here changes the predecessor repository's current maintenance configuration.
+The main module is `SwiftJLI`; the diagnostic CLI is `swiftjli-cli`. Features from the predecessor remain migration candidates whose exact coverage must be verified; see IMPLEMENTATION.md. Nothing here changes the predecessor repository's current maintenance configuration.
 
 ## Synthetic storage example
 

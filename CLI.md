@@ -1,17 +1,17 @@
-# swiftjli: help, diagnostics and installation
+# swiftjli-cli: help, diagnostics and installation
 
 Version **1.1.0-dev.2**; Swift 6.2 minimum with Swift 6.4 qualified / Swift 6, Apple OS minimum **26.0**. The CLI targets macOS and Linux; Linux execution remains a qualification requirement. No external parser package or sibling codec is required. Current commands report help, version and the library's actual capabilities. Encode/decode/inspect/validate remain unavailable (exit 4), without opening input, consuming stdin or creating output. Their help describes reserved syntax only.
 
 ```sh
-swift run swiftjli --help
-swift run swiftjli -h
-swift run swiftjli help capabilities
-swift run swiftjli capabilities --help
-swift run swiftjli --version
-swift run swiftjli capabilities --json
-swift run swiftjli capabilities -vv
-swift run swiftjli capabilities -verbose: 3
-swift run swiftjli capabilities --verbose=+++++
+swift run swiftjli-cli --help
+swift run swiftjli-cli -h
+swift run swiftjli-cli help capabilities
+swift run swiftjli-cli capabilities --help
+swift run swiftjli-cli --version
+swift run swiftjli-cli capabilities --json
+swift run swiftjli-cli capabilities -vv
+swift run swiftjli-cli capabilities -verbose: 3
+swift run swiftjli-cli capabilities --verbose=+++++
 ```
 
 Both global and command-local help include availability, examples, option ranges/defaults, streams, errors and manual discovery. No arguments also show help. Use `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer` with the qualified Xcode on macOS.
@@ -35,16 +35,16 @@ Run the installer from this source checkout. It builds the release executable an
 
 ```sh
 DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer ./Scripts/install-cli.sh --prefix "$HOME/.local"
-"$HOME/.local/bin/swiftjli" --help
-man -M "$HOME/.local/share/man" swiftjli
+"$HOME/.local/bin/swiftjli-cli" --help
+man -M "$HOME/.local/share/man" swiftjli-cli
 ```
 
-Default prefix is `/usr/local`; choose an absolute writable prefix. Add its `bin` directory to PATH. For ordinary `man swiftjli` lookup with a custom prefix, configure MANPATH to include `PREFIX/share/man` while retaining system defaults (for example `export MANPATH="$HOME/.local/share/man:${MANPATH:-}"`). Direct `man -M` needs no index refresh. The page is [ManPages/swiftjli.1](ManPages/swiftjli.1). A packaging recipe must install both `PREFIX/bin/swiftjli` (0755) and `PREFIX/share/man/man1/swiftjli.1` (0644).
+Default prefix is `/usr/local`; choose an absolute writable prefix. Add its `bin` directory to PATH. For ordinary `man swiftjli-cli` lookup with a custom prefix, configure MANPATH to include `PREFIX/share/man` while retaining system defaults (for example `export MANPATH="$HOME/.local/share/man:${MANPATH:-}"`). Direct `man -M` needs no index refresh. The page is [ManPages/swiftjli-cli.1](ManPages/swiftjli-cli.1). A packaging recipe must install both `PREFIX/bin/swiftjli-cli` (0755) and `PREFIX/share/man/man1/swiftjli-cli.1` (0644).
 
-`--destdir /absolute/staging` (or DESTDIR) stages those same prefix-relative locations for packaging. `--binary /absolute/built/swiftjli` avoids a rebuild and verifies `--version` against VERSION before writing. `--scratch-path` selects a build directory; `--disable-package-sandbox` is only an explicit workaround for nested sandbox restrictions. An existing destination symlink/directory is refused. Merely copying the executable does not install its manual.
+`--destdir /absolute/staging` (or DESTDIR) stages those same prefix-relative locations for packaging. `--binary /absolute/built/swiftjli-cli` avoids a rebuild and verifies `--version` against VERSION before writing. `--scratch-path` selects a build directory; `--disable-package-sandbox` is only an explicit workaround for nested sandbox restrictions. An existing destination symlink/directory is refused. Merely copying the executable does not install its manual.
 
 ## Exit codes and validation
 
 Implemented exit statuses: 0 success/help/version, 2 invalid usage, 4 unavailable codec operation, 6 output failure including closed pipes. Reserved future codec codes: 3 malformed input, 5 resource/deadline, 7 internal failure, 130 user cancellation. No successful compression is inferred from a zero-exit capability query. Library errors cannot terminate the host application; exit handling exists only in this executable.
 
-`Scripts/test-cli.py --binary /absolute/built/swiftjli --output /new/evidence/directory` checks the real executable, help, verbosity, JSON separation, invalid inputs, unavailable operations, closed pipes and staged manual install/update/rendering. [Qualification](Documentation/Engineering/OS27CLI/README.md) records exact executed commands and platform limits. Later codec milestones must add real stream/format/overwrite/cancellation tests before advertising those operations.
+`Scripts/test-cli.py --binary /absolute/built/swiftjli-cli --output /new/evidence/directory` checks the real executable, help, verbosity, JSON separation, invalid inputs, unavailable operations, closed pipes and staged manual install/update/rendering. [Qualification](Documentation/Engineering/OS27CLI/README.md) records exact executed commands and platform limits. Later codec milestones must add real stream/format/overwrite/cancellation tests before advertising those operations.

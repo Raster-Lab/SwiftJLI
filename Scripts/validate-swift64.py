@@ -73,29 +73,38 @@ def main() -> int:
     def save() -> None:
         (output / "report.json").write_text(json.dumps(report, indent=2) + "\n")
 
-    # Swift Build names each target's intermediates directory after the target.
-    # This package's library module and its CLI product differ only in case
-    # (`SwiftJLI` and `swiftjli`), so on a case-insensitive filesystem — the
-    # macOS default — those are one directory: the two targets overwrite each
-    # other's dependency files and the compiler fails with "unable to open
-    # dependencies file". The library alone builds; any build including the
-    # executable does not. The native engine is unaffected. Renaming either the
-    # module or the executable is a contract decision (API-01, CLI-01), not this
-    # script's to make, so the engine is recorded rather than the name changed.
+    # Swift Build names each product's intermediates directory after the product.
+    # Where a product's name differs from a target's only in case, those are one
+    # directory on a case-insensitive filesystem — the macOS default — and the two
+    # overwrite each other's dependency files: the compiler then fails with
+    # "unable to open dependencies file", and only builds that include both are
+    # affected. The executable was renamed to `swiftjli-cli` on 23 September 2026
+    # precisely so this cannot happen, but the check stays: it is cheap, it states
+    # the invariant the name now satisfies, and it explains the fallback rather
+    # than letting a future rename reintroduce a confusing build failure.
     probe = output / "CaseProbe"
     probe.mkdir()
     case_insensitive = (output / "caseprobe").exists()
     probe.rmdir()
     report["filesystem_case_insensitive"] = case_insensitive
+    # A package legitimately reuses one spelling for its package, product and
+    # target, so repetition is not the test. The defect is two *distinct*
+    # spellings that are equal when case-folded, which is what "differ by case
+    # alone" means and what shares a directory.
+    spellings: dict[str, set[str]] = {}
+    for declared in set(re.findall(r'name:\s*"([^"]+)"', manifest)):
+        spellings.setdefault(declared.lower(), set()).add(declared)
+    collisions = sorted(folded for folded, group in spellings.items() if len(group) > 1)
+    report["case_folded_name_collisions"] = collisions
     engine = args.build_engine
-    if engine == "swiftbuild" and case_insensitive:
+    if engine == "swiftbuild" and case_insensitive and collisions:
         engine = "native"
         report["build_engine"] = engine
         report["open_gates"].append(
-            "Swift Build engine unusable on a case-insensitive filesystem: the library module "
-            f"'{name}' and the CLI product '{name.lower()}' share an intermediates directory, so "
-            "targets overwrite each other's dependency files. Built with the native engine "
-            "instead; Swift Build coverage is unexecuted, not passed.")
+            "Swift Build engine unusable here: manifest names " + ", ".join(repr(c) for c in collisions)
+            + " differ only in case and share an intermediates directory on a case-insensitive "
+            "filesystem, so targets overwrite each other's dependency files. Built with the native "
+            "engine instead; Swift Build coverage is unexecuted, not passed.")
 
     def run(label: str, argv: list[str], cwd: Path = repo) -> str:
         log = output / f"{label}.log"
@@ -256,6 +265,29 @@ def main() -> int:
         if sbom_supported:
             run("swift-sbom-help", swift("package", "help") + ["generate-sbom", "--help"])
         run("target-info", ["xcrun", "swiftc", "-print-target-info"])
+        # Decide the engine once, before anything is built with it, because the
+        # build and test gates below share a scratch directory per label and
+        # cannot change engine midway. Measured on Apple Swift 6.2.3: `swift test
+        # list` under the Swift Build engine prints its build log and no test
+        # identifiers at all, so every gate below would have nothing to run and
+        # would report zero tests. Whether a later toolchain enumerates them is
+        # not asserted here — this probes rather than assumes, and the result is
+        # recorded either way.
+        if engine == "swiftbuild":
+            probe_text = run("swiftbuild-enumeration-probe",
+                             swift("test", "engine-probe") + ["-c", "debug", "list"] + frameworks)
+            enumerated = sum(1 for line in probe_text.splitlines() if line.startswith(name + "Tests."))
+            report["swiftbuild_enumerated_tests"] = enumerated
+            if enumerated == 0:
+                engine = "native"
+                report["build_engine"] = engine
+                report["open_gates"].append(
+                    "Swift Build engine enumerated no tests on this toolchain ("
+                    + report["toolchain_swift"].splitlines()[0].strip()
+                    + "): `swift test list` returned its build log and no test identifiers, so the gates "
+                    "below would have had nothing to run. Built and tested with the native engine instead; "
+                    "Swift Build coverage is unexecuted, not passed.")
+            save()
         for config in ("debug", "release"):
             if config in selected:
                 # Each invocation owns a fresh output tree. The second build reuses exactly that tree.

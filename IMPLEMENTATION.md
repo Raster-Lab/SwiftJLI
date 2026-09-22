@@ -4,7 +4,7 @@ Read AGENTS.md and every common contract document first. Milestone 1 implements 
 
 ## Source and destination
 
-Predecessor: [Raster-Lab/JLISwift](https://github.com/Raster-Lab/JLISwift). Target module/product: `SwiftJLI`. Target CLI: `swiftjli`. Intended first stable library version: `1.1.0`.
+Predecessor: [Raster-Lab/JLISwift](https://github.com/Raster-Lab/JLISwift). Target module/product: `SwiftJLI`. Target CLI: `swiftjli-cli`. Intended first stable library version: `1.1.0`.
 
 **Milestone 2 pinned revision: `0a4ded0b0b2e8e38127f4f302b286e74ee352474`.** Selected and recorded 23 September 2026; see [the pin record](#milestone-2-pinned-predecessor-revision) below for the resolution evidence and why this revision rather than the last stable tag.
 
@@ -63,7 +63,7 @@ POL-05 requires every product to be explicitly **retained** (migrates, stays a p
 | `JLIDICOM` | 3 / 1,305 | 0 | Deferred — retired | none | POL-05 keeps DICOM parsing in consumers, and `DICOMWindowRenderer` is windowing, which the memory contract excludes from the codec outright: "No windowing, VOI LUT, modality rescale, colour display conversion or automatic normalisation occurs in this contract." DICOMKit declares this product as a dependency and never imports it. |
 | `JLIBench` (exec) | 10 / 2,616 | 0 | Deferred — dev tooling | none | TESTING keeps development-only tools outside the shipped dependency graph |
 
-**Product list after migration:** `SwiftJLI` (library) and `swiftjli` (executable).
+**Product list after migration:** `SwiftJLI` (library) and `swiftjli-cli` (executable).
 
 ### Decisions recorded with these dispositions
 
@@ -71,7 +71,7 @@ POL-05 requires every product to be explicitly **retained** (migrates, stays a p
 
 **I2 — deferring `JLIBench` does not defer its fixtures.** Its `Regression/` corpus and `IdentityHashes.swift` are exactly the pinned predecessor corpus and bug reproducers TEST-04 requires to be carried forward. The fixtures migrate with the codec and keep their provenance records; only the executable is deferred.
 
-**I3 — `swiftjli`'s payload verbs are new work, not a migration.** The predecessor ships no codec CLI, only the `JLIBench` benchmark executable, so CLI-01's required surface cannot be migrated from anywhere. The first stable 1.1.0 ships the diagnostic CLI already present — help, version and capabilities — and `encode`, `decode`, `inspect`, `validate` are budgeted as new implementation in the CLI milestone rather than treated as part of the codec move.
+**I3 — `swiftjli-cli`'s payload verbs are new work, not a migration.** The predecessor ships no codec CLI, only the `JLIBench` benchmark executable, so CLI-01's required surface cannot be migrated from anywhere. The first stable 1.1.0 ships the diagnostic CLI already present — help, version and capabilities — and `encode`, `decode`, `inspect`, `validate` are budgeted as new implementation in the CLI milestone rather than treated as part of the codec move.
 
 ## Milestone 2 pinned predecessor revision
 

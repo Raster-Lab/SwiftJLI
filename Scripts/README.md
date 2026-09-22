@@ -8,15 +8,16 @@ DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer ./Scripts/validate.sh
 
 The default run checks debug and release clean/incremental builds and tests, a fresh standalone local consumer, five fixed repetitions of selected ownership/cancellation tests, and build-associated SPDX/CycloneDX SBOM generation. It requests **`--build-system swiftbuild`** by default, overridable with `--build-engine`.
 
-Three capabilities are probed rather than assumed, because contract 0.5.0 keeps **Swift 6.2** an accepted toolchain and 6.2 has none of them. Where one is missing the run records an unexecuted gate under POL-08, prints it at the end and continues, rather than failing on an accepted toolchain:
+Four capabilities are probed rather than assumed, because contract 0.5.0 keeps **Swift 6.2** an accepted toolchain and 6.2 supplies none of them. Where one is missing the run records an unexecuted gate under POL-08, prints it at the end and continues, rather than failing on an accepted toolchain:
 
 | Capability | Absent on | Behaviour |
 | --- | --- | --- |
 | `swift build --sbom-spec` | Swift 6.2 | SBOM generation skipped; `sbom_supported: false` |
 | `swift test --maximum-repetitions` | Swift 6.2 | Repetitions run as that many separate executions instead, each validated and logged |
-| Swift Build engine | any case-insensitive filesystem | Falls back to the native engine; `build_engine` records what actually ran |
+| Swift Build engine, name collision | a case-insensitive filesystem **and** manifest names differing only in case | Falls back to the native engine. Not triggered since the 23 September rename |
+| Swift Build engine, test enumeration | Swift 6.2 | `swift test list` returns the build log and no test identifiers, so every gate below would have nothing to run. Falls back to the native engine; `build_engine` records what ran |
 
-The engine fallback is not a toolchain limit but a naming one. Swift Build gives each target an intermediates directory named after it, and this package's library module `SwiftJLI` and CLI product `swiftjli` differ only in case, so on a case-insensitive filesystem — the macOS default — they are one directory and the two targets overwrite each other's dependency files. The library alone builds; anything including the executable fails with "unable to open dependencies file". Renaming either is a contract decision (API-01, CLI-01), so the script records the substitution instead of making one. `requested_build_engine` and `build_engine` are both in the report. Each run gets a new evidence directory and isolated build/cache paths. Build concurrency defaults to two workers per command; use `--jobs` (1–32) deliberately when running several repositories in parallel.
+The engine fallback is a naming guard, not a toolchain limit. Swift Build names each product's intermediates directory after the product, so a product whose name differs from a target's only in case shares that directory on a case-insensitive filesystem — the macOS default — and the two overwrite each other's dependency files, failing with "unable to open dependencies file". That is why the executable is `swiftjli-cli` and not `swiftjli`: the latter collided with the `SwiftJLI` module and made Swift Build unusable on macOS. The check remains because it is cheap and states the invariant the name now satisfies; it no longer fires here, and `requested_build_engine` and `build_engine` are both in the report. Each run gets a new evidence directory and isolated build/cache paths. Build concurrency defaults to two workers per command; use `--jobs` (1–32) deliberately when running several repositories in parallel.
 
 ```sh
 # Add separate AddressSanitizer and ThreadSanitizer builds/runs.
