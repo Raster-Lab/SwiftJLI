@@ -4,7 +4,11 @@ Read AGENTS.md and every common contract document first. Milestone 1 implements 
 
 ## Source and destination
 
-Predecessor: [Raster-Lab/JLISwift](https://github.com/Raster-Lab/JLISwift) at inspected SHA `9f1c6eb609fe6f26498db82b13df6b305630a374`. Highest stable-shaped tag observed: `v0.5.0` (resolve independently before choosing it as a baseline). Target module/product: `SwiftJLI`. Target CLI: `swiftjli`. Intended first stable library version: `1.1.0`.
+Predecessor: [Raster-Lab/JLISwift](https://github.com/Raster-Lab/JLISwift). Target module/product: `SwiftJLI`. Target CLI: `swiftjli`. Intended first stable library version: `1.1.0`.
+
+**Milestone 2 pinned revision: `0a4ded0b0b2e8e38127f4f302b286e74ee352474`.** Selected and recorded 23 September 2026; see [the pin record](#milestone-2-pinned-predecessor-revision) below for the resolution evidence and why this revision rather than the last stable tag.
+
+The documentation foundation inspected `9f1c6eb609fe6f26498db82b13df6b305630a374` and observed `v0.5.0` as the highest stable-shaped tag, recording them as separate references that it did not assert resolved to the same commit. They do: the annotated tag `v0.5.0` (`a7a9bdde1b859a4208f0f8c00e4806cd0e5bbaeb`) dereferences to commit `9f1c6eb6`. That question is now closed.
 
 Do not migrate code from moving main without recording the selected revision. Reproduce relevant source tests and inspect source-level capabilities. Existing test totals and benchmark claims are historical, not successor acceptance evidence.
 
@@ -55,7 +59,7 @@ POL-05 requires every product to be explicitly **retained** (migrates, stays a p
 | Predecessor product | Files / lines | Imports | Disposition | Successor | Basis |
 | --- | --- | --- | --- | --- | --- |
 | `JLISwift` | 30 / 8,707 | 1 | Adapted — renamed | `SwiftJLI` | API-01 |
-| ↳ `Sources/JLISwift/Contract/` | — | — | Adapted — folded in | `SwiftJLI` | Contract 0.8.0 §5 |
+| ↳ `Sources/JLISwift/Contract/` | 8 / 989 | — | Adapted — folded in, mostly as retired duplicates | `SwiftJLI` | Contract 0.8.0 §5. The directory folds into the principal module rather than becoming a product, but six of its eight files are copies of this repository's Milestone 1 types and are retired rather than carried; only `BorrowedPlane.swift` and `ContractCodec.swift` have no counterpart here. File-by-file dispositions are in [the item 5 reconciliation](#reconciliation-of-duplicate-contract-surfaces-contract-080-item-5). |
 | `JLIDICOM` | 3 / 1,305 | 0 | Deferred — retired | none | POL-05 keeps DICOM parsing in consumers, and `DICOMWindowRenderer` is windowing, which the memory contract excludes from the codec outright: "No windowing, VOI LUT, modality rescale, colour display conversion or automatic normalisation occurs in this contract." DICOMKit declares this product as a dependency and never imports it. |
 | `JLIBench` (exec) | 10 / 2,616 | 0 | Deferred — dev tooling | none | TESTING keeps development-only tools outside the shipped dependency graph |
 
@@ -68,6 +72,56 @@ POL-05 requires every product to be explicitly **retained** (migrates, stays a p
 **I2 — deferring `JLIBench` does not defer its fixtures.** Its `Regression/` corpus and `IdentityHashes.swift` are exactly the pinned predecessor corpus and bug reproducers TEST-04 requires to be carried forward. The fixtures migrate with the codec and keep their provenance records; only the executable is deferred.
 
 **I3 — `swiftjli`'s payload verbs are new work, not a migration.** The predecessor ships no codec CLI, only the `JLIBench` benchmark executable, so CLI-01's required surface cannot be migrated from anywhere. The first stable 1.1.0 ships the diagnostic CLI already present — help, version and capabilities — and `encode`, `decode`, `inspect`, `validate` are budgeted as new implementation in the CLI milestone rather than treated as part of the codec move.
+
+## Milestone 2 pinned predecessor revision
+
+Selected 23 September 2026 under contract 0.9.0, which permits "selecting and recording the pinned predecessor revision for Milestone 2" before the continuous-integration precondition is met. Recording a pin moves no source.
+
+**Pin: commit `0a4ded0b0b2e8e38127f4f302b286e74ee352474`.** This is the commit the annotated tag `v0.6.0-rc.1` dereferences to, and it is also what the predecessor's `main` pointed at when the pin was taken.
+
+| Reference | Annotated tag object | Commit | Tagged |
+| --- | --- | --- | --- |
+| `v0.5.0` | `a7a9bdde1b859a4208f0f8c00e4806cd0e5bbaeb` | `9f1c6eb609fe6f26498db82b13df6b305630a374` | 2026-06-12 |
+| `v0.6.0-rc.1` | `28e4b962dad5f8fd54219c879d1c31b07ad11905` | `0a4ded0b0b2e8e38127f4f302b286e74ee352474` | 2026-09-21 |
+
+`v0.6.0-rc.1` is an unpromoted release candidate, so the pin is recorded as the **commit**, not the tag. Promoting it is the predecessor's own release task (contract 0.8.0 item 6) and is not authorised here. If the final `v0.6.0` release carries further commits, this pin is re-recorded against that revision before Milestone 2 begins.
+
+### Why this revision and not the last stable tag
+
+`v0.5.0` is the obvious candidate — it is the last stable tag, it is the revision every provenance link in this repository already pins, and it is what DICOMKit consumes. It is nonetheless the wrong pin, because the two commits between it and `0a4ded0` are not incidental. They are twelve files, and they are the shared-storage work:
+
+| Path | Change | Why it matters |
+| --- | --- | --- |
+| `Sources/JLISwift/Contract/` | 8 files added, 989 lines | The contract surface and its codec adapter |
+| `Sources/JLISwift/Core/JLIImage.swift` | +32 | An **internal** geometry-only initialiser, so a shared-storage image can be described without samples |
+| `Sources/JLISwift/Decoder/JLIDecoder.swift` | +93 −25 | A borrowed-destination decode path that honours the caller's row stride and never writes inter-row padding |
+| `Sources/JLISwift/Encoder/JLIEncoder.swift` | +77 −13 | A borrowed-source encode path that never reads padding into the codestream |
+| `Tests/JLISwiftTests/ContractImageLayerTests.swift` | +268 | The contract image-layer tests |
+
+Contract 0.6.0 identified the caller-storage obstacle as the public image type rather than the codec interior, and named this codec the clearest instance of it. The commits above are the answer to exactly that finding. Pinning at `v0.5.0` would discard them and re-derive them here, against a predecessor baseline that no longer matches the source the tests were written for.
+
+Two qualifications are recorded rather than glossed. First, the geometry-only initialiser is `internal` and the public `JLIImage` initialiser still rejects any buffer that is not the packed frame size, so the public-type obstacle contract 0.6.0 described is worked around internally, not removed; removing it remains successor work. Second, the predecessor's own test baseline at this pin has **not** been established here — TEST-04 requires reproducing it on a compatible platform and recording failures and skips, and that is Milestone 2 work that the continuous-integration precondition still gates.
+
+## Reconciliation of duplicate contract surfaces (contract 0.8.0 item 5)
+
+Recorded 23 September 2026. Contract 0.8.0 item 5 requires that where a migrated contract layer duplicates the Milestone 1 types already built here, one of the two is retired deliberately and the choice recorded, because "two parallel surfaces in one module are not an acceptable migration outcome". At the pin this is not hypothetical: `Sources/JLISwift/Contract/` declares 159 public declarations, `Sources/SwiftJLI/` declares 153, and 151 are identical when compared as normalised public declaration lines.
+
+The duplication has a traceable cause. All eight predecessor contract files carry `SPDX-License-Identifier: MIT` inside an Apache-2.0 repository. The successors were MIT until contract 0.8.0 relicensed them to Apache-2.0 on 22 September 2026, and this layer landed in JLISwift on 20 September. Four of the six overlapping files — `CodecAPI.swift`, `Errors.swift`, `ImageDescriptor.swift` and `Options.swift` — are byte-identical to this repository's files apart from that one licence line. The predecessor's contract layer is a copy of this repository's Milestone 1 types, taken while they were MIT.
+
+| Predecessor path | Disposition | Basis |
+| --- | --- | --- |
+| `Contract/CodecAPI.swift`, `Errors.swift`, `ImageDescriptor.swift`, `Options.swift` | **Retired** — the copy is dropped; this repository's file stands | Byte-identical but for the SPDX line; nothing to merge |
+| `Contract/Image.swift`, `ImageStorage.swift` | **Retired** — this repository's file stands | Differ only in the concurrency bridge; see below |
+| `Contract/BorrowedPlane.swift` | **Migrates** | No successor counterpart; the non-`Sendable`, non-owning borrow types the codec interior sees |
+| `Contract/ContractCodec.swift` | **Migrates, adapted** | No successor counterpart; `JLIContractCodec` is the adapter that binds the contract surface to the codec |
+| `Core/JLIImage.swift`, `Decoder/JLIDecoder.swift`, `Encoder/JLIEncoder.swift` changes | **Migrate** | The shared-storage paths; the reason for the pin |
+| `Tests/JLISwiftTests/ContractImageLayerTests.swift` | **Migrates** | Contract-layer coverage, carried forward under TEST-04 |
+
+**Why this repository's `Image.swift` and `ImageStorage.swift` win.** These are the only two files that diverge in substance, and the divergence is entirely a consequence of the predecessor's deployment floor. `OwnedImageStorage` and `ImageDestination` are `@unchecked Sendable` there, guarded by `NSLock` with a written proof, because `Synchronization.Mutex` requires macOS 15 and JLISwift ships at macOS 14 with consumers there. This repository's floor is 26.0, so the same two types use `Mutex` and are checked `Sendable`. The bridge is sound where it stands and unnecessary here: once the code sits at a 26.0 floor its entire justification is gone, and AGENTS.md requires a local written proof and lifetime/race tests for every unchecked annotation. Retiring the copies removes two unchecked annotations rather than importing them.
+
+**Licence handling on migration.** The MIT headers are an artefact of the copy direction, not a third-party notice. This is in-house Raster Images code, and POL-07 as amended by contract 0.8.0 licenses this repository, its in-house source and its documentation under Apache-2.0. Files migrating from the predecessor are normalised to the Apache-2.0 identifier, and each migrated path records its source commit. This is not authority to alter any third-party notice, and the predecessor's published tags keep their original texts.
+
+**What is not decided here.** This record settles which surface survives. It does not move any source: under contract 0.9.0 adding predecessor codec implementation or codec test files to this repository is the line that is not crossed until continuous integration executes and passes here, and the Actions billing lock was still in force when this was recorded.
 
 ## Required handover
 
