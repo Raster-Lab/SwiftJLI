@@ -59,7 +59,7 @@ POL-05 requires every product to be explicitly **retained** (migrates, stays a p
 | Predecessor product | Files / lines | Imports | Disposition | Successor | Basis |
 | --- | --- | --- | --- | --- | --- |
 | `JLISwift` | 30 / 8,707 | 1 | Adapted — renamed | `SwiftJLI` | API-01 |
-| ↳ `Sources/JLISwift/Contract/` | — | — | Adapted — folded in | `SwiftJLI` | Contract 0.8.0 §5 |
+| ↳ `Sources/JLISwift/Contract/` | 8 / 989 | — | Adapted — folded in, mostly as retired duplicates | `SwiftJLI` | Contract 0.8.0 §5. The directory folds into the principal module rather than becoming a product, but six of its eight files are copies of this repository's Milestone 1 types and are retired rather than carried; only `BorrowedPlane.swift` and `ContractCodec.swift` have no counterpart here. File-by-file dispositions are in [the item 5 reconciliation](#reconciliation-of-duplicate-contract-surfaces-contract-080-item-5). |
 | `JLIDICOM` | 3 / 1,305 | 0 | Deferred — retired | none | POL-05 keeps DICOM parsing in consumers, and `DICOMWindowRenderer` is windowing, which the memory contract excludes from the codec outright: "No windowing, VOI LUT, modality rescale, colour display conversion or automatic normalisation occurs in this contract." DICOMKit declares this product as a dependency and never imports it. |
 | `JLIBench` (exec) | 10 / 2,616 | 0 | Deferred — dev tooling | none | TESTING keeps development-only tools outside the shipped dependency graph |
 
